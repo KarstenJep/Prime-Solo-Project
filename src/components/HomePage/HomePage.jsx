@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import DateTime from '../Date/Date';
 
 function HomePage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const batch = useSelector((store) => store.batch);
+  const dispatch = useDispatch();
+  
+  console.log('in home', batch, user);
+
+  useEffect(() => {
+    // on page load, get list of batches from the database
+    dispatch({ type: 'FETCH_BATCHES' });
+  }, [])
+
   return (
     <>
     <DateTime />

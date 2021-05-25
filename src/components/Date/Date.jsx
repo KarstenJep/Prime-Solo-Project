@@ -4,13 +4,13 @@ function DateTime() {
     const [date, setDate] = useState(new Date());
     console.log('in date', date);
 
-    useEffect(() => {
-        let timer = setInterval(() => setDate(new Date()), 100000)
+    // useEffect(() => {
+    //     let timer = setInterval(() => setDate(new Date()), 100000)
       
-        return function cleanup() {
-            clearInterval(timer)
-        }
-    });
+    //     return function cleanup() {
+    //         clearInterval(timer)
+    //     }
+    // });
 
     return (
         <div>
