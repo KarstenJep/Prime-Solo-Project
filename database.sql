@@ -9,11 +9,12 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "users" (
+-- Test tables below...
+CREATE TABLE "user" (
 	"id" SERIAL PRIMARY KEY,
 	"username" VARCHAR (80) UNIQUE NOT NULL,
 	"password" VARCHAR (80) NOT NULL,
-	"number" INTEGER
+	"number" VARCHAR (10)
 );
 
 CREATE TABLE "batch" (
@@ -35,9 +36,7 @@ CREATE TABLE "hop_additions" (
 	"batch_id" INT REFERENCES "batch" NOT NULL
 );
 
-INSERT INTO "users" (username, password, number)
-VALUES ('kjepsen86@gmail.com', 'karsten', '6514429080'),
-('karstenjepsen@q.com', 'karsten2', '6514429080');
+-- Test data below
 
 INSERT INTO "users" ("username", "password", "number")
 VALUES ('kjepsen86@gmail.com', 'karsten', 6514429080),
