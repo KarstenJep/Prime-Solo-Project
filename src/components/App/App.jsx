@@ -14,8 +14,8 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import HomePage from '../HomePage/HomePage';
+import AddPage from '../AddPage/AddPage';
 // import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -53,17 +53,17 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/home"
           >
-            <UserPage />
+            <HomePage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/add"
           >
-            <InfoPage />
+            <AddPage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
@@ -75,7 +75,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/home"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -86,7 +86,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/home"
           >
             <RegisterPage />
           </ProtectedRoute>

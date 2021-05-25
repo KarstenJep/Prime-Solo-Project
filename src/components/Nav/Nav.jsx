@@ -13,24 +13,24 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user';
+    loginLinkData.path = '/home';
     loginLinkData.text = 'Home';
   }
 
   return (
     <div className="nav">
-      <Link to="/home">
+      {/* <Link to="/home">
         <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
-      <div>
+      </Link> */}
+      <div> 
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
 
         {user.id && (
           <>
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/add">
+              Add Batch
             </Link>
             <LogOutButton className="navLink" />
           </>
