@@ -1,4 +1,4 @@
-const batchReducer = (state = {}, action) => {
+const batchReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_BATCHES':
             return action.payload;
