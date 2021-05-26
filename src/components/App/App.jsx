@@ -12,7 +12,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+import SchedulePage from '../SchedulePage/SchedulePage';
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import AddPage from '../AddPage/AddPage';
@@ -38,20 +38,20 @@ function App() {
           <Redirect exact from="/" to="/login" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
+          {/* <Route
             // shows AboutPage at all times (logged in or not)
             exact
             path="/about"
           >
             <AboutPage />
-          </Route>
+          </Route> */}
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows homePage else shows LoginPage
             exact
             path="/home"
           >
@@ -66,12 +66,20 @@ function App() {
             <AddPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows SchedulePage else shows LoginPage
+            exact
+            path="/schedule"
+          >
+            <SchedulePage />
+          </ProtectedRoute>
+
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/home"
             // - else shows LoginPage at /login
             exact
             path="/login"
@@ -82,7 +90,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/home"
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
@@ -91,16 +99,16 @@ function App() {
             <RegisterPage />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
+          <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows LandingPage at "/home"
+            // - if logged in, redirects to "/home"
+            // - else shows AboutPage at "/about"
             exact
-            path="/home"
-            authRedirect="/user"
+            path="/about"
+            authRedirect="/home"
           >
-            <LandingPage />
-          </ProtectedRoute> */}
+            <AboutPage />
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

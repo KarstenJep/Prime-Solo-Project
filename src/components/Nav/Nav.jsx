@@ -17,6 +17,7 @@ function Nav() {
     loginLinkData.text = 'Home';
   }
 
+
   return (
     <div className="nav">
       {/* <Link to="/home">
@@ -27,18 +28,26 @@ function Nav() {
           {loginLinkData.text}
         </Link>
 
+        {!user.id && ( 
+          <Link className="navLink" to="/about">
+            About
+          </Link>
+        )}
+
         {user.id && (
           <>
             <Link className="navLink" to="/add">
               Add Batch
             </Link>
+            <Link className="navLink" to="/schedule">
+              Schedule
+            </Link>
+            {/* <Link className="navLink" to="/inventory">
+              Inventory
+            </Link>  */}
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
