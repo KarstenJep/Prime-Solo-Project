@@ -26,7 +26,7 @@ if (date.getUTCFullYear) {
     <>
     <div>
             <p>{date.toLocaleDateString()}</p>
-            <p>{date.getDay()} {date.getMonth() + 1}/{date.getDate()}</p>
+            <h3>{date.getMonth() + 1}/{date.getDate()}</h3>
     </div>
     
     {batch.map(today => {
