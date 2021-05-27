@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 function HopForm() {
     const [hopName, setHopName] = useState('');
     const [amount, setAmount] = useState('');
     const [unit, setUnit] = useState('');
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState('');
     const dispatch = useDispatch();
 
    
 
     const addHops = (e) => {
-        const isoDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+        // const isoDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
             e.preventDefault();
-            console.log('Clicked add hops', hopName, amount, unit, isoDate);
+            console.log('Clicked add hops', hopName, amount, unit, date);
             dispatch({
                 type: 'SET_HOPS', payload: {
                                 hop_name: hopName, 
                                 amount: amount, 
                                 unit: unit, 
-                                date: isoDate
+                                date: date
             }
         })
         // Clear hop form
@@ -49,9 +49,10 @@ function HopForm() {
                         placeholder="Unit"
                         onChange={(e) => setUnit(e.target.value)}
                         />
-                    <DatePicker
-                        selected={date}
-                        onChange={(date) => setDate(date)}
+                    <input
+                        value={date}
+                        type="date"
+                        onChange={(e) => setDate(e.target.value)}
                         />
                     <button type="submit">Add Hop Addition</button>
                </form>
