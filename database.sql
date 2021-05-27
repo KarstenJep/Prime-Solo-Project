@@ -52,3 +52,19 @@ VALUES ('Citra', 80, 'oz', '5-31-2021', 1),
 ('Julius', 50, 'oz', '6-6-2021', 3),
 ('Strata', 100, 'oz', '6-1-2021', 4);
 
+SELECT movies.title, movies.description, ARRAY_AGG(genres.name) as genres, movies.poster FROM movies
+JOIN movies_genres ON movies.id = movies_genres.movie_id
+JOIN genres ON movies_genres.genre_id = genres.id
+WHERE movies.id = 11 GROUP BY movies.title, movies.description, movies.poster;
+
+--- schedule
+SELECT batch.name, batch."tank#", batch."batch#", ARRAY_AGG(hops.hop_id) as hopid, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
+FROM batch
+JOIN hops ON batch.id = hops.batch_id
+GROUP BY batch.name, batch."tank#", batch."batch#"
+;
+
+-- daily hops
+SELECT * FROM batch
+JOIN hops ON batch.id = hops.batch_id
+WHERE hops."date" = '05/31/2021', $1;

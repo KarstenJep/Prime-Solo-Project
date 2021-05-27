@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function HopForm() {
     const [hopName, setHopName] = useState('');
     const [amount, setAmount] = useState('');
     const [unit, setUnit] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(new Date());
     const dispatch = useDispatch();
 
+   
 
     const addHops = (e) => {
-        e.preventDefault();
-        console.log('Clicked add hops', hopName, amount, unit, date );
-        dispatch({
-            type: 'SET_HOPS', payload: {
-                               hop_name: hopName, 
-                               amount: amount, 
-                               unit: unit, 
-                               date: date
+        const isoDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+            e.preventDefault();
+            console.log('Clicked add hops', hopName, amount, unit, isoDate);
+            dispatch({
+                type: 'SET_HOPS', payload: {
+                                hop_name: hopName, 
+                                amount: amount, 
+                                unit: unit, 
+                                date: isoDate
             }
         })
+        // Clear hop form
+        setHopName('')
+        setAmount('')
+        setUnit('')
+        setDate('')
     }
 
     return (
-        <>
                 <form onSubmit={addHops}>
                 <h5>Hop Additions</h5>
                     <input
@@ -41,14 +49,12 @@ function HopForm() {
                         placeholder="Unit"
                         onChange={(e) => setUnit(e.target.value)}
                         />
-                    <input
-                        value={date}
-                        placeholder="Date"
-                        onChange={(e) => setDate(e.target.value)}
+                    <DatePicker
+                        selected={date}
+                        onChange={(date) => setDate(date)}
                         />
                     <button type="submit">Add Hop Addition</button>
-                </form>
-        </>
+               </form>
     )
 }
 

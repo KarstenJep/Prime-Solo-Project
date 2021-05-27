@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import {useDispatch, useSelector} from 'react-redux';
@@ -6,34 +7,33 @@ import DateTime from '../Date/Date';
 function HomePage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const batch = useSelector((store) => store.batch);
+  const batches = useSelector((store) => store.batch);
   const [date, setDate] = useState(new Date());
+  const weekday = moment().format('dddd');
   const dispatch = useDispatch();
   
-  console.log('in home', batch, user);
-  console.log('in date', date.getUTCFullYear);
+  console.log('in home', batches, user);
+  console.log("moment", moment().format('dddd')); 
 
+  useEffect(() => {
+    // on page load, get list of batches from the database
+    dispatch({ type: 'FETCH_BATCHES' });
+  }, [])
 
-  // useEffect(() => {
-  //   // on page load, get list of batches from the database
-  //   dispatch({ type: 'FETCH_BATCHES' });
-  // }, [])
-if (date.getUTCFullYear) {
-  
-}
 
   return (
     <>
     <div>
-            <p>{date.toLocaleDateString()}</p>
-            <h3>{date.getMonth() + 1}/{date.getDate()}</h3>
+            {/* <p>{date.toLocaleDateString()}</p> */}
+            <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
     </div>
     
-    {batch.map(today => {
-      console.log('in home map', today);
+    {batches.map(batch => {
+      console.log('in home map', batch);
       return (
-        <div key={today.hop_id}>
-          <h3>{today.name}</h3>
+        <div key={batch.hop_id}>
+          <h4>{batch.name}</h4>
+          <ul></ul>
         </div>
       )
     })}
@@ -45,5 +45,5 @@ if (date.getUTCFullYear) {
   );
 }
 
-// this allows us to use <App /> in index.js
+
 export default HomePage;
