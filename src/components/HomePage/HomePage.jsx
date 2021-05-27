@@ -7,17 +7,20 @@ import DateTime from '../Date/Date';
 function HomePage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const batches = useSelector((store) => store.batch);
+  // const batches = useSelector((store) => store.batch);
+  const daily = useSelector((store) => store.daily);
   const [date, setDate] = useState(new Date());
   const weekday = moment().format('dddd');
+  const id = moment().format('YYYY-MM-DD')
   const dispatch = useDispatch();
   
-  console.log('in home', batches, user);
-  console.log("moment", moment().format('dddd')); 
-
+  console.log('in home', daily, user, date);
+  console.log("moment", moment().format('YYYY MM DD')); 
+  Number(id)
+console.log(id);
   useEffect(() => {
     // on page load, get list of batches from the database
-    dispatch({ type: 'FETCH_BATCHES' });
+    dispatch({ type: 'FETCH_DAILY', payload: id });
   }, [])
 
 
@@ -28,7 +31,7 @@ function HomePage() {
             <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
     </div>
     
-    {batches.map(batch => {
+    {daily.map(batch => {
       console.log('in home map', batch);
       return (
         <div key={batch.hop_id}>
