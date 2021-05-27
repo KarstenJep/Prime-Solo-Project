@@ -1,8 +1,9 @@
 import { all, takeEvery } from 'redux-saga/effects';
-import batch from './batch.saga';
+import fetchBatch from './fetchBatch.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
+import addBatch from './addBatch.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -12,11 +13,12 @@ import userSaga from './user.saga';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  yield takeEvery('FETCH_BATCHES', batch);
+  yield takeEvery('FETCH_BATCHES', fetchBatch);
+  yield takeEvery('ADD_BATCH', addBatch);
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    batch(),
+    // batch(),
   ]);
 }

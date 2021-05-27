@@ -12,7 +12,14 @@ function HopForm() {
     const addHops = (e) => {
         e.preventDefault();
         console.log('Clicked add hops', hopName, amount, unit, date );
-        dispatch({type: 'SET_HOPS', hop_name: hopName, amount: amount, unit: unit, date: date })
+        dispatch({
+            type: 'SET_HOPS', payload: {
+                               hop_name: hopName, 
+                               amount: amount, 
+                               unit: unit, 
+                               date: date
+            }
+        })
     }
 
     return (
