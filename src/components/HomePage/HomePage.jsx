@@ -23,9 +23,13 @@ console.log(id);
     dispatch({ type: 'FETCH_DAILY', payload: id });
   }, [])
 
+  const completed = () => {}
 
   return (
     <>
+    <div className="">
+      <h2>Welcome, Karsten!</h2>
+    </div>
     <div>
             {/* <p>{date.toLocaleDateString()}</p> */}
             <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
@@ -36,14 +40,13 @@ console.log(id);
       return (
         <div key={addition.hop_id}>
           <h4>{addition.name}</h4>
-          <p>{addition.tank}</p>
+          <p> Tank: {addition.tank} / Batch: {addition.batch_num}</p>
+          <p> Hop: {addition.hop_name}&nbsp; 
+              / Amount: {addition.amount}{addition.unit}&nbsp;
+              / <button onClick={completed}>✅</button></p>
         </div>
       )
     })}
-    <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>It's time to party #{user.id}</p>
-    </div>
     </>
   );
 }
