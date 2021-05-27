@@ -11,15 +11,19 @@ function Schedule() {
         dispatch({ type: 'FETCH_BATCHES' });
       }, [])
 
+      const handleClick = () => {
+          console.log('handle clicked');
+      }
+
     return (
         <>
         <h1>Schedule</h1>
         {batches.map((batch, i) => {
             console.log('in schedule map', batch);
             return (
-                <div key={i}>
-                    <p>{batch.name} - {batch.batch_num}</p>
-                </div>
+                <ul key={i}>
+                    <li onClick={handleClick}>{batch.batch_num} - {batch.name} - Tank {batch.tank}</li>
+                </ul>
             )
         })}
         </>

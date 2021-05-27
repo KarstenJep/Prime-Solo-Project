@@ -41,6 +41,7 @@ function HopForm() {
                         />
                     <input
                         value={amount}
+                        type="number"
                         placeholder="Amount"
                         onChange={(e) => setAmount(e.target.value)}
                         />

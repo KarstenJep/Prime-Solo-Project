@@ -44,20 +44,23 @@ function AddPage() {
 
   return (
     <div className="addform">
-      <h3>Add a batch biatch!</h3>
+      <h2>Add a Batch!</h2>
       <form onSubmit={submitForm}>
         <input 
           value={name}
+          type="text"
           placeholder="Beer Name"
           onChange={(e) => setName(e.target.value)}
           />
         <input
           value={tank}
+          type="number"
           placeholder="Tank #"
           onChange={(e) => setTank(e.target.value)}
           />
         <input
           value={batch}
+          type="number"
           placeholder="Batch #"
           onChange={(e) => setBatch(e.target.value)}
           />
