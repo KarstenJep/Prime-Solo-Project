@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     const beer = req.body.beer
     const hops = req.body.hops
     const batchQuery = `
-    INSERT INTO "batch" ("name", "tank#", "batch#", "user_id")
+    INSERT INTO "batch" ("name", "tank", "batch_num", "user_id")
     VALUES ($1, $2, $3, $4)
     RETURNING "id";` // RETURNING "id" will give us back the id of the created batch
     

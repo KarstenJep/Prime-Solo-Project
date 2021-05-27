@@ -31,12 +31,12 @@ console.log(id);
             <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
     </div>
     
-    {daily.map(batch => {
-      console.log('in home map', batch);
+    {daily.map(addition => {
+      console.log('in home map', addition);
       return (
-        <div key={batch.hop_id}>
-          <h4>{batch.name}</h4>
-          <ul></ul>
+        <div key={addition.hop_id}>
+          <h4>{addition.name}</h4>
+          <p>{addition.tank}</p>
         </div>
       )
     })}

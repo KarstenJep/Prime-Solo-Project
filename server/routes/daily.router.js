@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET route for batch (add hop_addition) tables
 router.get('/:id', (req, res) => {
-    console.log(req.params.id);
+    console.log('in router get', req.params.id);
     const dailyQuery = `SELECT * FROM batch
     JOIN hops ON batch.id = hops.batch_id
     WHERE hops."date" = $1;`

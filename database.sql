@@ -15,8 +15,8 @@ CREATE TABLE "user" (
 CREATE TABLE "batch" (
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR (60),
-	"batch#" INTEGER,
-	"tank#" INTEGER,
+	"batch_num" INTEGER,
+	"tank" INTEGER,
 	"complete" BOOLEAN DEFAULT FALSE,
 	"user_id" INT REFERENCES "user" NOT NULL
 );
@@ -33,11 +33,11 @@ CREATE TABLE "hops" (
 
 -- Test data below
 
-INSERT INTO "users" ("username", "password", "number")
+INSERT INTO "user" ("username", "password", "number")
 VALUES ('kjepsen86@gmail.com', 'snowboard', 6514429080),
 ('karstenjepsen@q.com', 'karsten', 6514429080);
 
-INSERT INTO "batch" ("name", "batch#", "tank#", "user_id")
+INSERT INTO "batch" ("name", "batch_num", "tank", "user_id")
 VALUES ('Cabin Daze IPA', 333, 8, 1),
 ('Bad Axe DIPA', 334, 11, 1),
 ('Fine! IPA', 335, 4, 2),
@@ -58,10 +58,10 @@ JOIN genres ON movies_genres.genre_id = genres.id
 WHERE movies.id = 11 GROUP BY movies.title, movies.description, movies.poster;
 
 --- schedule
-SELECT batch.name, batch."tank#", batch."batch#", ARRAY_AGG(hops.hop_id) as hopid, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
+SELECT batch.name, batch."tank", batch."batch_num", ARRAY_AGG(hops.hop_id) as hopid, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
 FROM batch
 JOIN hops ON batch.id = hops.batch_id
-GROUP BY batch.name, batch."tank#", batch."batch#"
+GROUP BY batch.name, batch."tank", batch."batch_num"
 ;
 
 -- daily hops
