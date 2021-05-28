@@ -4,6 +4,7 @@ import user from './user.reducer';
 import batch from './batch.reducer';
 import hops from './hops.reducer';
 import daily from './daily.reducer';
+import update from './update.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   batch,
   hops,
   daily,
+  update,
 });
 
 export default rootReducer;
