@@ -12,6 +12,9 @@ function DateTime() {
     //     }
     // });
 
+
+    {/* <p>{date.toLocaleDateString()}</p> */}
+
     return (
         <div>
             <p>{date.toLocaleDateString()}</p>

@@ -16,8 +16,8 @@ function HomePage() {
   
   console.log('in home', daily, user, date);
   console.log("moment", moment().format('YYYY MM DD')); 
-  Number(id)
-console.log(id);
+  // Number(id)
+  // console.log(id);
   useEffect(() => {
     // on page load, get list of batches from the database
     dispatch({ type: 'FETCH_DAILY', payload: id });
@@ -27,23 +27,20 @@ console.log(id);
 
   return (
     <>
-    <div className="">
-      <h2>Welcome, Karsten!</h2>
-    </div>
     <div>
-            {/* <p>{date.toLocaleDateString()}</p> */}
-            <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
+          <h2>Welcome, Karsten!</h2>
+          <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2>
     </div>
     
     {daily.map(addition => {
       console.log('in home map', addition);
       return (
         <div key={addition.hop_id}>
-          <h4>{addition.name}</h4>
-          <p> Tank: {addition.tank} / Batch: {addition.batch_num}</p>
-          <p> Hop: {addition.hop_name}&nbsp; 
-              / Amount: {addition.amount}{addition.unit}&nbsp;
-              / <button onClick={completed}>✅</button></p>
+          <h4>{addition.name}:</h4>
+          <p><b><i> Tank: </i></b>{addition.tank} / <b><i> Batch: </i></b>{addition.batch_num}</p>
+          <p><b><i> Hop:</i></b> {addition.hop_name}&nbsp; 
+             / <b><i> Amount:</i></b> {addition.amount}{addition.unit} &nbsp;
+               <button onClick={completed}>✅</button></p>
         </div>
       )
     })}
