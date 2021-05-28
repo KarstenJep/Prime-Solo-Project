@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
+import UpdatePage from '../UpdatePage/UpdatePage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SchedulePage from '../SchedulePage/SchedulePage';
 import AboutPage from '../AboutPage/AboutPage';
@@ -72,6 +72,14 @@ function App() {
             path="/schedule"
           >
             <SchedulePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows SchedulePage else shows LoginPage
+            exact
+            path="/update"
+          >
+            <UpdatePage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

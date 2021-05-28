@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { unstable_batchedUpdates } from 'react-dom';
+import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 function Schedule() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const batches = useSelector((store) => store.batch);
 
     useEffect(() => {
@@ -11,18 +12,23 @@ function Schedule() {
         dispatch({ type: 'FETCH_BATCHES' });
       }, [])
 
-      const handleClick = () => {
-          console.log('handle clicked');
+      const handleClick = (batch) => {
+          console.log('handle clicked', batch);
+          dispatch({ type: 'SET_UPDATE', payload: batch });
+          history.push('/update');  
       }
 
     return (
         <>
         <h1>Schedule</h1>
+        
         {batches.map((batch, i) => {
             console.log('in schedule map', batch);
             return (
                 <ul key={i}>
-                    <li onClick={handleClick}>{batch.batch_num} - {batch.name} - Tank {batch.tank}</li>
+                    <li onClick={(e) => handleClick(batch)}>
+                        {batch.batch_num} - {batch.name} - Tank {batch.tank}
+                        </li>
                 </ul>
             )
         })}
