@@ -5,12 +5,19 @@ const router = express.Router();
 // GET route for batch (add hop_addition) tables
 router.get('/', (req, res) => {
     pool
-    .query(`SELECT batch.id, batch.name, batch.tank, batch.batch_num, ARRAY_AGG(hops.hop_id) as hop_id, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
-            FROM batch
-            JOIN hops ON batch.id = hops.batch_id
-            GROUP BY batch.id, batch.name, batch.tank, batch.batch_num
-            ORDER BY batch_num
-            ;`)
+    .query(`
+    SELECT
+	batch.*,
+			CASE WHEN count(h) = 0 THEN ARRAY[]::json[] ELSE array_agg(h.hops) END AS hops,
+			json_build_object('id', "user".id, 'username', "user".username) as "user"
+	FROM batch
+	JOIN "user" ON batch.user_id = "user".id
+	LEFT OUTER JOIN (
+		SELECT batch_id, json_build_object('hop_id', hops.hop_id, 'batch_id', hops.batch_id, 'hop_name', hops.hop_name, 'amount', hops.amount, 'unit', hops.unit, 'date', hops.date, 'complete', hops.complete) as hops
+		FROM hops ORDER BY hops.hop_id
+		) h on h.batch_id=batch.id
+	GROUP BY batch.id, batch.name, batch.batch_num, batch.tank, "user".id, "user".username ORDER BY batch.batch_num
+    ;`)
         .then((results) => {
             res.send(results.rows);
         })

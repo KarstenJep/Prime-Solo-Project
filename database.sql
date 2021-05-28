@@ -28,7 +28,7 @@ CREATE TABLE "hops" (
 	"unit" VARCHAR (10) NOT NULL,
 	"date" DATE,
 	"complete" BOOLEAN DEFAULT FALSE,
-	"batch_id" INT REFERENCES "batch" NOT NULL
+	"batch_id" INT REFERENCES "batch" NOT NULL ON DELETE CASCADE
 );
 
 -- Test data below
@@ -63,6 +63,12 @@ FROM batch
 JOIN hops ON batch.id = hops.batch_id
 GROUP BY batch.name, batch."tank", batch."batch_num"
 ;
+
+SELECT batch.id, batch.name, batch.tank, batch.batch_num, ARRAY_AGG(hops.hop_id) as hop_id, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
+            FROM batch
+            JOIN hops ON batch.id = hops.batch_id
+            GROUP BY batch.id, batch.name, batch.tank, batch.batch_num
+            ORDER BY batch_num
 
 -- daily hops
 SELECT * FROM batch
