@@ -5,10 +5,10 @@ const router = express.Router();
 // GET route for batch (add hop_addition) tables
 router.get('/', (req, res) => {
     pool
-    .query(`SELECT batch.name, batch.tank, batch.batch_num, ARRAY_AGG(hops.hop_id) as hopid, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
+    .query(`SELECT batch.id, batch.name, batch.tank, batch.batch_num, ARRAY_AGG(hops.hop_id) as hop_id, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
             FROM batch
             JOIN hops ON batch.id = hops.batch_id
-            GROUP BY batch.name, batch.tank, batch.batch_num
+            GROUP BY batch.id, batch.name, batch.tank, batch.batch_num
             ORDER BY batch_num
             ;`)
         .then((results) => {
