@@ -33,12 +33,12 @@ router.get('/', (req, res) => {
     const beer = req.body.beer
     const hops = req.body.hops
     const batchQuery = `
-    INSERT INTO "batch" ("name", "tank", "batch_num", "user_id")
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO "batch" ("name", "style", "tank", "batch_num", "user_id")
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING "id";` // RETURNING "id" will give us back the id of the created batch
     
     // First query creates new batch
-    pool.query(batchQuery, [beer.name, beer.tank, beer.batch, beer.user_id])
+    pool.query(batchQuery, [beer.name, beer.style, beer.tank, beer.batch, beer.user_id])
     .then(result => {
         console.log('New batch id', result.rows[0].id);
         const newBatchId = result.rows[0].id
@@ -65,11 +65,15 @@ router.get('/', (req, res) => {
 
 // removed  rejectUnauthenticated
   router.delete('/:id', (req, res) => {
-    const queryText = 'DELETE FROM item WHERE id=$1 AND user_id=$2;';
+    console.log('in delete route', req.params.id, req.user.id);
+    const queryText = 'DELETE FROM batch WHERE id=$1 AND user_id=$2;';
     pool.query(queryText, [req.params.id, req.user.id])
-      .then(() => { res.sendStatus(200) })
-      .catch((error) => {
-        console.log('Error in deleting item', error);
+      .then(() => { 
+        console.log('Deleted batch')
+        res.sendStatus(200) 
+       })
+      .catch(err => {
+        console.log('Error in deleting item', err);
         res.sendStatus(500);
       });
   });
