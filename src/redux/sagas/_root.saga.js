@@ -6,6 +6,7 @@ import userSaga from './user.saga';
 import addBatch from './addBatch.saga';
 import fetchDaily from './fetchDaily.saga';
 import deleteBatch from './delete.saga';
+import updateBatch from './update.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,6 +20,7 @@ export default function* rootSaga() {
   yield takeEvery('ADD_BATCH', addBatch);
   yield takeEvery('FETCH_DAILY', fetchDaily);
   yield takeEvery('DELETE_BATCH', deleteBatch);
+  yield takeEvery('UPDATE_BATCH', updateBatch);
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),
