@@ -4,8 +4,7 @@ const router = express.Router();
 
 // GET route for batch (add hop_addition) tables
 router.get('/', (req, res) => {
-    pool
-    .query(`
+    pool.query(`
     SELECT
 	batch.*,
 			CASE WHEN count(h) = 0 THEN ARRAY[]::json[] ELSE array_agg(h.hops) END AS hops,
@@ -91,5 +90,23 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
       });
   });
+
+  router.get('/', (req, res) => {
+    console.log('in router invenory get', req.body);
+    const inventoryQuery = `SELECT hops.hop_name, SUM(hops.amount), ARRAY_AGG(hops.unit) as unit 
+                            FROM hops
+                            WHERE hops.complete=false
+                            GROUP BY hops.hop_name
+                            ;`
+    pool.query(inventoryQuery)
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+            console.log('Error in GET inventory', err);
+        })
+  });
+
 
   module.exports = router;
