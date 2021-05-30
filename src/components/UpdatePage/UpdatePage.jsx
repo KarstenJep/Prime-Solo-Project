@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 
 function UpdatePage () {
     const dispatch = useDispatch();
+    const history = useHistory();
     const update = useSelector((store) => store.update);
     console.log('in update', update);
-console.log('number', Number(15.40).toFixed(4));
-    const deleteHops = () => {}
+
+    const deleteHops = (id) => {
+        console.log('in delete hops', id);
+        dispatch({ type: 'DELETE_BATCH', payload: id });
+    }
 
     const deleteBatch = (id) => {
         console.log('in delete batch', id);
@@ -21,7 +26,7 @@ console.log('number', Number(15.40).toFixed(4));
 
     return (
         <>
-        <h1>Update {update.name}({update.batch_num})</h1>
+        <h2>Update {update.name} #{update.batch_num}</h2>
         <h3>Batch:</h3>
         <form onSubmit={handleSaveEdit}>
             <input 
@@ -34,7 +39,7 @@ console.log('number', Number(15.40).toFixed(4));
                 value={update.style}
                 type="text"
                 placeholder="Style"
-                onChange={(e) => setBatch(e.target.value)}
+                onChange={(e) => handleChange(e)}
             />
             <input
                 value={update.tank}
@@ -70,11 +75,11 @@ console.log('number', Number(15.40).toFixed(4));
                         onChange={(e) => handleChange(e)}
                         />
                     <input
-                        value={moment(update.date).format('LL')}
+                        value={moment(addition.date).format('LL')}
                         type=""
                         onChange={(e) => handleChange(e)}
                         />
-                    <button type="submit" onClick={deleteHops}>Delete Addition</button>
+                    <button onClick={() => deleteHops(addition.hop_id)}>Delete Addition</button>
                     </>
                 )
             })}

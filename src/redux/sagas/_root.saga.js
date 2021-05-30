@@ -5,7 +5,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import addBatch from './addBatch.saga';
 import fetchDaily from './fetchDaily.saga';
-import deleteBatch from './deleteBatch.saga';
+import deleteBatch from './delete.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.

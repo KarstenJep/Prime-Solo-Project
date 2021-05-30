@@ -65,11 +65,25 @@ router.get('/', (req, res) => {
 
 // removed  rejectUnauthenticated
   router.delete('/:id', (req, res) => {
-    console.log('in delete route', req.params.id, req.user.id);
+    console.log('in delete batch route', req.params.id, req.user.id);
     const queryText = 'DELETE FROM batch WHERE id=$1 AND user_id=$2;';
     pool.query(queryText, [req.params.id, req.user.id])
       .then(() => { 
         console.log('Deleted batch')
+        res.sendStatus(200) 
+       })
+      .catch(err => {
+        console.log('Error in deleting item', err);
+        res.sendStatus(500);
+      });
+  });
+
+  router.delete('/:id', (req, res) => {
+    console.log('in delete hops route', req.params.id, req.user.id);
+    const queryText = 'DELETE FROM hops WHERE id=$1;';
+    pool.query(queryText, [req.params.id, req.user.id])
+      .then(() => { 
+        console.log('Deleted hops', req.body)
         res.sendStatus(200) 
        })
       .catch(err => {
