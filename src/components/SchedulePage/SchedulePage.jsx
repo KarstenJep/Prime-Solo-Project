@@ -13,7 +13,7 @@ function Schedule() {
       }, [])
 
       const handleClick = (batch) => {
-          console.log('handle clicked', batch);
+          console.log('clicked a batch', batch);
           dispatch({ type: 'SET_UPDATE', payload: batch });
           history.push('/update');  
       }
@@ -27,8 +27,14 @@ function Schedule() {
             return (
                 <ul key={i}>
                     <li onClick={(e) => handleClick(batch)}>
-                        {batch.batch_num} - {batch.name} - Tank {batch.tank}
+                        {batch.batch_num} - {batch.name} {batch.style} - Tank {batch.tank}
                         </li>
+                        {/* <p>Hop Additions: {batch.hops.map(dates => {
+                            console.log('in date map', dates);
+                            return (
+                                <p>{dates.date}</p>
+                            )
+                        })}</p> */}
                 </ul>
             )
         })}
