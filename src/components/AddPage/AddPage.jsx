@@ -8,6 +8,7 @@ import HopForm from '../HopForm/HopForm';
 
 function AddPage() {
   const [name, setName] = useState('');
+  const [style, setStyle] = useState('');
   const [tank, setTank] = useState('');
   const [batch, setBatch] = useState('');
   const hops = useSelector((store) => store.hops);
@@ -16,6 +17,7 @@ function AddPage() {
 
   const beer = {
                 name: name,
+                style: style,
                 tank: tank,
                 batch: batch,
                 user_id: user.id
@@ -37,6 +39,7 @@ function AddPage() {
     })
     // Clear Form
     setName('')
+    setStyle('')
     setTank('')
     setBatch('')
     // dispatch({type: 'CLEAR_HOPS' });
@@ -51,6 +54,12 @@ function AddPage() {
           type="text"
           placeholder="Beer Name"
           onChange={(e) => setName(e.target.value)}
+          />
+        <input 
+          value={style}
+          type="text"
+          placeholder="Style"
+          onChange={(e) => setStyle(e.target.value)}
           />
         <input
           value={tank}
