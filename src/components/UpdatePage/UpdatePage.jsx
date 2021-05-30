@@ -6,6 +6,7 @@ import moment from 'moment';
 function UpdatePage () {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [editMode, setEditMode] = useState(false);
     const update = useSelector((store) => store.update);
     console.log('in update', update);
 
@@ -20,14 +21,31 @@ function UpdatePage () {
         history.push('/schedule');
     }
 
-    const handleSaveEdit = () => {
-        console.log('clicked Save Edit', update.name, update.tank, update.batch_num);
+    const handleSaveEdit = (event) => {
+        console.log('clicked Save Edit', update.name, update.tank, update.batch_num, update.hops);
+        const updatedBatch = {
+
+        }
+        console.log('updated batch info', updatedBatch);
+        dispatch({type: 'UPDATE_BATCH', payload: updatedBatch})
+
+        setEditMode(false)
+
+        history.push('/schedule')
+    }
+
+    const handleEdit = () => {
+        setEditMode(true)
     }
 
     return (
         <>
         <h2>Update {update.name} #{update.batch_num}</h2>
         <h3>Batch:</h3>
+        {/* <button onClick={() => {history.push('/schedule')}}>Back</button> */}
+        { editMode === false &&
+            <button onClick={handleEdit}>Edit</button>
+            }
         <form onSubmit={handleSaveEdit}>
             <input 
                 value={update.name}
@@ -65,7 +83,7 @@ function UpdatePage () {
                         />
                     <input
                         value={addition.amount}
-                        type=""
+                        type="number"
                         placeholder="Amount"
                         onChange={(e) => handleChange(e)}
                         />
