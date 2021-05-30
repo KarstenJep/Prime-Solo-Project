@@ -4,10 +4,10 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('in router inventory get', req.body);
-    const inventoryQuery = `SELECT hops.hop_name, SUM(hops.amount), ARRAY_AGG(hops.unit) as unit 
+    const inventoryQuery = `SELECT hops.hop_name, SUM(hops.amount), hops.unit  
                             FROM hops
                             WHERE hops.complete=false
-                            GROUP BY hops.hop_name
+                            GROUP BY hops.hop_name, hops.unit
                             ;`
     pool.query(inventoryQuery)
         .then((results) => {
