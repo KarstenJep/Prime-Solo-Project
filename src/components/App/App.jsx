@@ -16,10 +16,9 @@ import SchedulePage from '../SchedulePage/SchedulePage';
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import AddPage from '../AddPage/AddPage';
-// import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
+import InventoryPage from '../InventoryPage/InventoryPage';
 import './App.css';
 
 function App() {
@@ -80,6 +79,14 @@ function App() {
             path="/update"
           >
             <UpdatePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows SchedulePage else shows LoginPage
+            exact
+            path="/inventory"
+          >
+            <InventoryPage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
