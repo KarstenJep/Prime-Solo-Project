@@ -82,7 +82,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows SchedulePage else shows LoginPage
+            // logged in shows InventoryPage else shows LoginPage
             exact
             path="/inventory"
           >
