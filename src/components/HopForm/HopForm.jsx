@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { makeStyles } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,13 +11,64 @@ function HopForm() {
     const [amount, setAmount] = useState('');
     const [unit, setUnit] = useState('');
     const [date, setDate] = useState('');
+    const [hopNameError, setHopNameError] = useState(false);
+    const [amountError, setAmountError] = useState(false);
+    const [unitError, setUnitError] = useState(false);
+    const [dateError, setDateError] = useState(false);
     const dispatch = useDispatch();
 
-   
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          '& > *': {
+            margin: theme.spacing(.5),
+            width: '75%',
+            height: '50%',
+            
+          },
+        },
+      }));
+      
+    //   export default function HopForm() {
+        const classes = useStyles();
+
+    const validateForm = (e) => {
+        e.preventDefault();
+        setHopNameError(false)
+        setAmountError(false)
+        setDateError(false)
+
+        if (hopName == ''){
+            setHopNameError(true)
+        }
+        if (amount == ''){
+            setAmountError(true)
+        }
+        if (date == ''){
+            setDateError(true)
+        }
+        if (hopName && amount && date) {
+            addHops(e);
+        }
+    }
 
     const addHops = (e) => {
         // const isoDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
             e.preventDefault();
+           
+            // setHopNameError(false)
+            // setAmountError(false)
+            // setDateError(false)
+
+            // if (hopName == ''){
+            //     setHopNameError(true)
+            // }
+            // if (amount == ''){
+            //     setAmountError(true)
+            // }
+            // if (date == ''){
+            //     setDateError(true)
+            // }
+       
             console.log('Clicked add hops', hopName, amount, unit, date);
             dispatch({
                 type: 'SET_HOPS', payload: {
@@ -32,32 +86,52 @@ function HopForm() {
     }
 
     return (
-                <form onSubmit={addHops}>
+                <form autoComplete="off" minHeight onSubmit={validateForm}>
                 <h5>Hop Additions</h5>
-                    <input
+                    <TextField 
+                        className={classes.root}
+                        label="Hop Name"
+                        variant="outlined"
                         value={hopName}
-                        placeholder="Hop Name"
                         onChange={(e) => setHopName(e.target.value)}
-                        />
-                    <input
-                        value={amount}
+                        error={hopNameError}
+                    />
+                    <TextField 
+                        className={classes.root}
+                        label="Amount"
                         type="number"
-                        placeholder="Amount"
+                        variant="outlined"
+                        value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        />
-                    <input
+                        error={amountError}
+                    />
+                    <TextField 
+                        className={classes.root}
+                        label="Unit"
+                        type="number"
+                        variant="outlined"
                         value={unit}
-                        placeholder="Unit"
                         onChange={(e) => setUnit(e.target.value)}
-                        />
-                    <input
+                    />
+                    <TextField 
+                        className={classes.root}
+                        // label="Date"
+                        type="date"
+                        variant="outlined"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        error={dateError}
+                    />
+                    
+                    {/* <input
                         value={date}
                         type="date"
                         onChange={(e) => setDate(e.target.value)}
-                        />
+                        /> */}
                     <button type="submit">Add Hop Addition</button>
                </form>
     )
 }
+// }
 
 export default HopForm;
