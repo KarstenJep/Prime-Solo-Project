@@ -8,6 +8,7 @@ import fetchDaily from './fetchDaily.saga';
 import deleteBatch from './delete.saga';
 import updateBatch from './update.saga';
 import inventory from './inventory.saga';
+import completeHop from './complete.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,7 +23,8 @@ export default function* rootSaga() {
   yield takeEvery('FETCH_DAILY', fetchDaily);
   yield takeEvery('DELETE_BATCH', deleteBatch);
   yield takeEvery('UPDATE_BATCH', updateBatch);
-  yield takeEvery('FETCH_INVENTORY', inventory)
+  yield takeEvery('FETCH_INVENTORY', inventory);
+  yield takeEvery('COMPLETE_HOP', completeHop)
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),
