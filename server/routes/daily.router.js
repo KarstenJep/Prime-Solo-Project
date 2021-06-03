@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+    rejectUnauthenticated,
+  } = require('../modules/authentication-middleware');
 
 // GET route for batch (add hop_addition) tables
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router get', req.params.id);
     const dailyQuery = `SELECT * FROM batch
     JOIN hops ON batch.id = hops.batch_id

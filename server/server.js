@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const batchRouter = require('./routes/batch.router');
 const dailyRouter = require('./routes/daily.router');
 const inventoryRouter = require('./routes/inventory.router');
+const updateRouter = require('./routes/update.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/batch', batchRouter);
+app.use('/api/update', updateRouter);
 app.use('/api/daily', dailyRouter);
 app.use('/api/inventory', inventoryRouter);
 

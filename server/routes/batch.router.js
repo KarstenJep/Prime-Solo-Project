@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 // GET route for batch (add hop_addition) tables
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     pool.query(`
     SELECT
 	batch.*,
@@ -19,6 +22,7 @@ router.get('/', (req, res) => {
     ;`)
         .then((results) => {
             res.send(results.rows);
+            // res.sendStatus(200) 
         })
         .catch(err => {
             res.sendStatus(500);
@@ -27,7 +31,7 @@ router.get('/', (req, res) => {
   });
 
   // POST route code here
-  router.post('/', (req, res) => {
+  router.post('/', rejectUnauthenticated, (req, res) => {
     console.log(req.body);
     const beer = req.body.beer
     const hops = req.body.hops
@@ -49,10 +53,11 @@ router.get('/', (req, res) => {
             pool.query(hopsQuery, [newBatchId, addition.hop_name, addition.amount, addition.unit, addition.date])
             .then(result => {
                 res.sendStatus(201);
+                // dispatch({type: 'CLEAR_HOPS' });
             })
             .catch(err => {
                 console.log(err);
-                res.sendStatus(500)
+                // res.sendStatus(500)
             })
         }) // end of .map
     }) // Catch for batch query
@@ -63,7 +68,7 @@ router.get('/', (req, res) => {
   });
 
 // removed  rejectUnauthenticated
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete batch route', req.params.id, req.user.id);
     const queryText = 'DELETE FROM batch WHERE id=$1 AND user_id=$2;';
     pool.query(queryText, [req.params.id, req.user.id])
@@ -77,10 +82,10 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.delete('/:id', (req, res) => {
+  router.delete('/hops/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete hops route', req.params.id, req.user.id);
-    const queryText = 'DELETE FROM hops WHERE id=$1;';
-    pool.query(queryText, [req.params.id, req.user.id])
+    const queryText = 'DELETE FROM hops WHERE hop_id=$1;';
+    pool.query(queryText, [req.params.id])
       .then(() => { 
         console.log('Deleted hops', req.body)
         res.sendStatus(200) 
