@@ -5,7 +5,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import addBatch from './addBatch.saga';
 import fetchDaily from './fetchDaily.saga';
-import deleteBatch from './delete.saga';
+import deleteBatch from './deleteBatch.saga';
 import deleteHops from './deleteHops.saga';
 import updateBatch from './update.saga';
 import inventory from './inventory.saga';
