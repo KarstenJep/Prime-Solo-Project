@@ -6,6 +6,7 @@ import userSaga from './user.saga';
 import addBatch from './addBatch.saga';
 import fetchDaily from './fetchDaily.saga';
 import deleteBatch from './delete.saga';
+import deleteHops from './deleteHops.saga';
 import updateBatch from './update.saga';
 import inventory from './inventory.saga';
 import completeHop from './complete.saga';
@@ -22,6 +23,7 @@ export default function* rootSaga() {
   yield takeEvery('ADD_BATCH', addBatch);
   yield takeEvery('FETCH_DAILY', fetchDaily);
   yield takeEvery('DELETE_BATCH', deleteBatch);
+  yield takeEvery('DELETE_HOPS', deleteHops);
   yield takeEvery('UPDATE_BATCH', updateBatch);
   yield takeEvery('FETCH_INVENTORY', inventory);
   yield takeEvery('COMPLETE_HOP', completeHop)
