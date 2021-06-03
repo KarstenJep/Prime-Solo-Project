@@ -6,6 +6,7 @@ function* addBatch( action ) {
     try {
         yield axios.post( '/api/batch', action.payload );
         yield put({type: 'FETCH_BATCH'});
+        yield put({type: 'CLEAR_HOPS'})
 
     } catch (error) {
         // alert(`Sorry. Things aren't working at the moment.`);
