@@ -97,16 +97,73 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
+  text-align: center;
+  font-size: large;
   width: 400px;
-  max-width: 100%;
-  padding: 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  max-width: 90%;
+  padding: 10px;
+  margin: 5px auto 20px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  /* margin-right: 0px; */
 }
 
-input {
+.input {
   margin: 5px;
   margin-bottom: 10px;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+  margin: 1;
+}
+
+.welcome {
+  margin-bottom: 0;
+  margin: 0;
+}
+
+.formPanel2 {
+  box-sizing: border-box;
+  /* align-items: center; */
+  text-align: center;
+  font-size: large;
+  width: 400px;
+  max-width: 90%;
+  padding: 0px;
+  padding-bottom: .5px;
+  margin: 5px auto 10px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  /* margin-right: 0px; */
+}
+
+.formPanel3 {
+  box-sizing: border-box;
+  /* text-align: left; */
+  font-size: large;
+  width: 400px;
+  max-width: 90%;
+  padding: 4px;
+  margin: 10px auto 5px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  /* margin-right: 10px; */
+}
+
+.formPanel4 {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
+  width: 400px;
+  max-width: 90%;
+  padding: 0px;
+  margin: 5px auto 5px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  margin-right: 10rem;
 }
