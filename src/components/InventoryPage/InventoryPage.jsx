@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 function InventoryPage() {
@@ -7,6 +10,7 @@ function InventoryPage() {
   const inventory = useSelector((store) => store.inventory);
   console.log('in inventory', inventory);
   const amount = inventory.sum;
+  const history = useHistory();
 
   useEffect(() => {
     // on page load, get list of inventory from the database
@@ -29,18 +33,26 @@ function InventoryPage() {
   //   }
   // }
 
+    const handleSchedule = () => {
+      // setInventoryView(false)
+      history.push('/schedule')
+    }
+
   return (
     <>
-    <div>
-      <h2>Inventory</h2>
+     <Box ml={14}>
+           <Button variant="contained" color="primary" onClick={handleSchedule}>View Schedule</Button>
+        </Box>
+      <form className="formPanel3" >
+      <h1>&nbsp;Inventory</h1>
       {/* {maths()} */}
        {inventory.map(hops => {
          console.log('in hops map', hops)
          return (
-           <li>{hops.hop_name} Upcoming Need: {hops.sum / 1}{hops.unit}</li>
+           <li><b>{hops.hop_name}</b>  - {hops.sum / 1} {hops.unit}</li>
          )
        })}
-    </div>
+    </form>
    </>
   );
 }
