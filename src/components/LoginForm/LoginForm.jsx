@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box'
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const login = (event) => {
     event.preventDefault();
@@ -29,70 +33,55 @@ function LoginForm() {
   return (
     <form className="formPanel" onSubmit={login}>
       <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="50" />
-      <h2>Whats Hop'nin?</h2>
+      <h1>What's Hop'nin?</h1>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
       <div>
-        <label htmlFor="username">
-          <b>Username:</b>
+      <Box p={1} >
           <TextField
             className="input"
             type="text"
-            name="username"
+            label="username"
             variant="outlined"
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             size="small"
           />
-        </label>
-        {/* <TextField 
-                      // className="input"
-                      // className={classes.paper}
-                      htmlFor="username"
-                      label="Username"
-                      type="text"
-                      variant="outlined"
-                      required
-                      value={username}
-                      onChange={(event) => setUsername(event.target.value)}
-                      // error={nameError}
-                      size="small"
-                    /> */}
+        </Box>
       </div>
       <div>
-      {/* <TextField 
-                      htmlFor="password"
-                      label="Password"
-                      type="text"
-                      variant="outlined"
-                      required
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                      size="small"
-                      m={2}
-                    /> */}
-        <label htmlFor="password">
-          <b>Password:&nbsp;</b>
+      <Box p={1} >
           <TextField
             type="password"
-            name="password"
+            label="password"
             variant="outlined"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             size="small"
           />
-        </label>
+        </Box>
       </div>
-      <div>
-        <Button className="btn" type="submit" name="submit" value="Log In" variant="contained" color="primary" text="primary" >
+      <Box p={1} >
+        <Button size="large" type="submit" name="submit" value="Log In" variant="contained" color="primary" font="primary" >
           Login
         </Button>
-      </div>
+      </Box>
+      <center>
+        <button
+          type="button"
+          className="btn btn_asLink"
+          onClick={() => {
+            history.push('/registration');
+          }}
+        >
+         No account? Register 
+        </button>
+      </center>
     </form>
   );
 }
