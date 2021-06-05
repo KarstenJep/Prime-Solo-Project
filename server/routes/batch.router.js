@@ -84,11 +84,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
   router.delete('/hops/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete hops route', req.params.id, req.user.id);
-    const queryText = 'DELETE FROM hops WHERE hop_id=$1;';
+    const queryText = 'DELETE FROM hops WHERE hop_id=$1 RETURNING batch_id;';
     pool.query(queryText, [req.params.id])
-      .then(() => { 
-        console.log('Deleted hops', req.body)
-        res.sendStatus(200) 
+      .then((result) => { 
+        console.log('Deleted hops', req.body, result.rows[0])
+        res.send(result.rows[0])
+        // res.sendStatus(200) 
        })
       .catch(err => {
         console.log('Error in deleting item', err);
