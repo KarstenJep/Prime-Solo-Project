@@ -7,12 +7,21 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background: url(https://media.gettyimages.com/photos/falling-green-hop-isolated-on-white-background-clipping-path-full-of-picture-id1073216670?b=1&k=6&m=1073216670&s=170667a&w=0&h=TNt5ia6giGI1SH5beou3LcBrMuIjNz31ijaL0pkVThg=) ;
+  background-size: cover;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
 }
+
+ul { 
+  list-style: none;
+  font-weight: 500;
+  padding-left: 3em;
+  text-indent: 3em;
+} 
 
 /* --------------------------------------------------------------------------------
 Container
@@ -135,7 +144,7 @@ h1, h2 {
   margin: 5px auto 10px;
   background-color: #fffefe;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   /* margin-right: 0px; */
 }
 
@@ -149,7 +158,7 @@ h1, h2 {
   margin: 10px auto 5px;
   background-color: #fffefe;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   /* margin-right: 10px; */
 }
 
@@ -163,6 +172,6 @@ h1, h2 {
   margin: 5px auto 5px;
   background-color: #fffefe;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   margin-right: 10rem;
 }
