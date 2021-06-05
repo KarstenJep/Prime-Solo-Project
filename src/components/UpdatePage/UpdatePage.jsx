@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import moment from 'moment';
+import { useHistory, useParams } from 'react-router-dom';
+
+import UpdateHops from '../UpdateHops/UpdateHops';
+
+import DeleteIcon from '@material-ui/icons/Delete';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 function UpdatePage () {
     const dispatch = useDispatch();
@@ -14,10 +24,25 @@ function UpdatePage () {
     const [style, setStyle] = useState('');
     const [tank, setTank] = useState('');
     const [batch, setBatch] = useState('');
-    const [hopName, setHopName] = useState('');
-    const [amount, setAmount] = useState('');
-    const [unit, setUnit] = useState('');
-    const [date, setDate] = useState('');
+
+    // const useStyles = makeStyles((theme) => ({
+    //     margin: {
+    //       margin: theme.spacing(1),
+    //     },
+    //     extendedIcon: {
+    //       marginRight: theme.spacing(1),
+    //     },
+    //   }));
+
+    // const classes = useStyles();
+
+    const {id} = useParams();
+
+    // useEffect(() => {
+    //     // on page load, get list of batches from the database
+    //     console.log('In useEffect param', id);
+    //     dispatch({ type: 'FETCH_UPDATE', payload: id });
+    //   }, []) // daily
 
     const handleEdit = () => {
         // Turn on edit mode
@@ -27,16 +52,12 @@ function UpdatePage () {
         setName(update.name)
         setStyle(update.style)
         setTank(update.tank)
-        setBatch(update.batch_num)
-        setHopName(update.hops.hop_name)
-        setAmount(update.hops.amount)
-        setUnit(update.hops.unit)
-        setDate(update.hops.date)
+        setBatch(update.batch_num) 
     }
 
-    const deleteHops = (id) => {
-        console.log('in delete hops', id);
-        dispatch({ type: 'DELETE_BATCH', payload: id });
+    const deleteHops = (hop_id, id) => {
+        console.log('in delete hops', hop_id, id);
+        dispatch({ type: 'DELETE_HOPS', payload: hop_id});
     }
 
     const deleteBatch = (id) => {
@@ -48,106 +69,106 @@ function UpdatePage () {
     const handleSaveEdit = (event) => {
         console.log('clicked Save Edit', update.name, update.tank, update.batch_num, update.hops);
         const updatedBatch = {
-
+            id: update.id, // User can't edit, so getting from reducer
+            name: name,
+            style: style,
+            tank: tank,
+            batch_num: batch,
         }
         console.log('updated batch info', updatedBatch);
         dispatch({type: 'UPDATE_BATCH', payload: updatedBatch})
 
         setEditMode(false)
-
         history.push('/schedule')
     }
 
-    
+    const completed = () => {}
 
     return (
         <>
-        <h2>Update {update.name} #{update.batch_num}</h2>
-        <h3>Batch:</h3>
+        
+        {/* <h3>Batch:</h3> */}
         {/* <button onClick={() => {history.push('/schedule')}}>Back</button> */}
         { editMode === false &&
-            <button onClick={handleEdit}>Edit</button>
+            <>
+            <Box ml={10}>
+            <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+                <Button onClick={handleEdit}>Edit</Button>
+                <Button>&nbsp;✔️&nbsp;</Button>
+                <Button 
+                startIcon={<DeleteIcon />}
+                onClick={() => deleteBatch(update.id)}>Batch</Button>
+            </ButtonGroup>
+            </Box>
+            {/* <button onClick={handleEdit}>Edit</button> */}
+            </>
             }
+        {/* <button onClick={() => deleteBatch(update.id)}>Delete Batch</button> */}
         { update && editMode ?
-        <form onSubmit={handleSaveEdit}>
+        <form className="formPanel" onSubmit={handleSaveEdit}>
+            <Button 
+            startIcon={<SaveIcon />}
+            variant="contained" type="submit" >Save</Button>
+            <h5>Batch</h5>
             <input 
-                value={update.name}
+                value={name}
                 type="text"
                 placeholder="Beer Name"
                 onChange={(e) => setName(e.target.value)}
             />
             <input
-                value={update.style}
+                value={style}
                 type="text"
                 placeholder="Style"
                 onChange={(e) => setStyle(e.target.value)}
             />
             <input
-                value={update.tank}
+                value={tank}
                 type="number"
                 placeholder="Tank #"
                 onChange={(e) => setTank(e.target.value)}
             />
             <input
-                value={update.batch_num}
+                value={batch}
                 type="number"
                 placeholder="Batch #"
                 onChange={(e) => setBatch(e.target.value)}
             />
-            
-            {update.hops.map(addition => {
-                return (
-                    <>
-                    <h5 key={addition.hop_id}>Hop Addition {addition.hop_id}:</h5>
-                    <input
-                        value={addition.hop_name}
-                        placeholder="Hop Name"
-                        onChange={(e) => setHopName(e.target.value)}
-                        />
-                    <input
-                        value={addition.amount}
-                        type="number"
-                        placeholder="Amount"
-                        onChange={(e) => setAmount(e.target.value)}
-                        />
-                    <input
-                        value={addition.unit}
-                        placeholder="Unit"
-                        onChange={(e) => setUnit(e.target.value)}
-                        />
-                    <input
-                        value={moment(addition.date).format('LL')}
-                        type=""
-                        onChange={(e) => setDate(e.target.value)}
-                        />
-                    <button onClick={() => deleteHops(addition.hop_id)}>Delete Addition</button>
-                    </>
-                )
-            })}
-            <button type="submit" >Save Edit</button>
+            <UpdateHops />
          </form>
         :
-            <div>
-                <h4>{update.name} {update.style}:</h4>
+        
+            <div className="formPanel">
+                <>
+                <h2>{update.name} {update.style}</h2>
                 <p><b><i> Batch: </i></b>{update.batch_num} /<b><i> Tank: </i></b>{update.tank} </p> 
                 {update.hops.map(addition => {
+                    console.log('in addition map', addition);
                     return (
                 <p><b><i> Hop:</i></b> {addition.hop_name}&nbsp;
-                / <b><i> Amount:</i></b> {addition.amount} {addition.unit} &nbsp;
-                {/* <button onClick={completed}>✅</button></p> */}</p>
+                / <b><i> Amount:</i></b> {addition.amount} {addition.unit} 
+               
+                 
+                    {/* <button onClick={completed}>✔️</button> */}
+                 {/* <button onClick={() => deleteHops(addition.hop_id, addition.batch_id)}>Delete Addition</button></p> */}
+                 <IconButton 
+                    aria-label="delete" 
+                    variant="contained"
+                    // className={classes.margin}
+                    onClick={() => deleteHops(addition.hop_id, addition.batch_id)}
+                    >
+                    <DeleteIcon />
+                </IconButton>
+                </p>
+                
                     )
                 })}
-                
+              </>  
             </div>
+        
         } 
         {/* End of conditional rendering */}
-        <button onClick={() => deleteBatch(update.id)}>Delete Batch</button>
-       
-          
-           
-             
-               
-
+        
 
     </>
     )
