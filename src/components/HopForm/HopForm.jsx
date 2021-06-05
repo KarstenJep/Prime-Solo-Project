@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box'
+import Icon from '@material-ui/core/Icon';
 
 
 
@@ -55,6 +57,7 @@ function HopForm() {
         setHopNameError(false)
         setAmountError(false)
         setDateError(false)
+        setUnitError(false)
 
         if (hopName == ''){
             setHopNameError(true)
@@ -95,7 +98,7 @@ function HopForm() {
         <>
                 <form className={classes.root} autoComplete="off" onSubmit={validateForm}>
                 <ThemeProvider theme={theme} className={classes.paper}>
-                    <Typography className={classes.paper} variant="h5"><b>Hop Additions</b></Typography>
+                    <Typography className={classes.paper} variant="h6"><b>Hop Additions</b></Typography>
                 </ThemeProvider>
                 <Grid container spacing={.25}>
                     <Grid item xs={6}>
@@ -132,7 +135,7 @@ function HopForm() {
                             size="small"
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={3}>
                         <TextField 
                             className={classes.paper}
                             select
@@ -147,13 +150,22 @@ function HopForm() {
                             <MenuItem value="lbs">lbs</MenuItem>
                         </TextField>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Button type="submit" variant="contained" color="secondary" size="small" className={classes.root} padding=".5">
-                            Add Hop Addition
+                    <Grid item xs={2}>
+                    {/* <Icon 
+                    style={{ fontSize: 30 }}
+                    type="submit"
+                    >add_circle</Icon> */}
+                        <Button type="submit" 
+                                variant="contained" 
+                                color="primary" 
+                                size="small" 
+                                className={classes.root} 
+                                // marginright="3">
+                                >
+                            ➕
                         </Button>
                     </Grid>
-                </Grid>
-                   
+                </Grid> 
                </form>
                </>
     )
