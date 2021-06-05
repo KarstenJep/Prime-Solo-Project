@@ -10,6 +10,7 @@ import deleteHops from './deleteHops.saga';
 import updateBatch from './update.saga';
 import inventory from './inventory.saga';
 import completeHop from './complete.saga';
+import fetchUpdate from './fetchUpdate';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -26,7 +27,8 @@ export default function* rootSaga() {
   yield takeEvery('DELETE_HOPS', deleteHops);
   yield takeEvery('UPDATE_BATCH', updateBatch);
   yield takeEvery('FETCH_INVENTORY', inventory);
-  yield takeEvery('COMPLETE_HOP', completeHop)
+  yield takeEvery('COMPLETE_HOP', completeHop);
+  yield takeEvery('FETCH_UPDATE', fetchUpdate);
   yield all([
     loginSaga(), // login saga is now registered
     registrationSaga(),
