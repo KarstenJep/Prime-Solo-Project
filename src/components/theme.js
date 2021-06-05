@@ -16,5 +16,16 @@ const theme = createMuiTheme({
           contrastText: '#000',
         },
       },
+    root: {
+        textAlign: 'center',
+    },
+    // button: {
+    //     itemAlign: 'center',
+    //     color: theme.text.primary,
+    //   },
+      
+    paperContainer: {
+        backgroundImage: `url(${"https://images.unsplash.com/photo-1611004666332-0d1298c1096f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"})`
+      },
 })
 export default theme
