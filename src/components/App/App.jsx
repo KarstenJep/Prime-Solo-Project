@@ -21,30 +21,13 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import InventoryPage from '../InventoryPage/InventoryPage';
 import './App.css';
 
-// import Button from '@material-ui/core/Button'
-// import Divider from '@material-ui/core/Divider';
-// import Drawer from '@material-ui/core/Drawer';
-// import Hidden from '@material-ui/core/Hidden';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import { makeStyles } from '@material-ui/core/styles';
-
 
 function App() {
   const dispatch = useDispatch();
 
-  
-
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
-
-  
 
   return (
 
@@ -54,17 +37,6 @@ function App() {
          <Switch>
            {/* Visiting localhost:3000 will redirect to localhost:3000/login */}
            <Redirect exact from="/" to="/login" />
-          {/* <Layout>
-
-          </Layout> */}
-          {/* Visiting localhost:3000/about will show the about page. */}
-          {/* <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route> */}
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -134,7 +106,8 @@ function App() {
           >
             <RegisterPage />
           </ProtectedRoute>
-
+          
+          {/* Visiting localhost:3000/about will show the about page. */}
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/home"
