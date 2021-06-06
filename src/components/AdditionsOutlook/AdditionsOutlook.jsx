@@ -14,9 +14,7 @@ function AdditionsView() {
 
   return (
     <div>
-      <form className="formPanel5" >
-        <h2>Additions</h2>
-      </form>
+        <h2 className="formPanel5">Additions</h2>
 
        {additions.map(hops => {
          console.log('in additions map', hops)

@@ -22,9 +22,7 @@ function BatchOutlook () {
 
   return (
     <div >
-        <form className="formPanel5">
-            <h2>Batches</h2>
-        </form>
+        <h2 className="formPanel5">Batches</h2>
 
         {batches.map((batch, i) => {
             console.log('in schedule map', batch);

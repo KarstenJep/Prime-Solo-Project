@@ -35,7 +35,7 @@ function HomePage() {
   const [date, setDate] = useState(new Date());
   const weekday = moment().format('dddd');
   const id = moment().format('YYYY-MM-DD');
-  const today = moment().format("dddd, MMMM Do");
+  const today = moment().format("MMMM Do");
   const dispatch = useDispatch();
   const [complete, setComplete] = useState('false');
 
@@ -67,38 +67,24 @@ function HomePage() {
 
 
   return (
-    <>
-    <div>
-          
-          {/* <h2>{weekday}, {date.getMonth() + 1}/{date.getDate()}</h2> */}
-          {/* <h1 className={classes.root}><b>{today}</b></h1> */}
-          <Box className="formPanel4" ml={2}>
-          <h3 >Welcome, Karsten!</h3>
-          <h1 ><b>&nbsp;{today}</b></h1>
-          </Box>
-    </div>
-    {/* {daily = daily.filter()} */}
+    <>   
+    <h2 className="formPanel5"><b>{weekday},<br></br>{today}</b></h2>
+    
     {daily.map(addition => {
-      // {checkCompleted()}
       console.log('in home map', addition, addition.complete);
-      // setComplete(addition.complete)
-      // {complete == false ?
       
       return (
         
         <div className="formPanel2" key={addition.hop_id}>
           
-          <h4><b>{addition.name} {addition.style}</b></h4>
-          <p><b><i> Tank: </i></b>{addition.tank} / <b><i> Batch: </i></b>{addition.batch_num}</p>
+          <h3><b>{addition.name} {addition.style}</b></h3>
+          <p><i> Tank: </i><b>{addition.tank}</b> / <i> Batch: </i><b>{addition.batch_num}</b></p>
 
-          <p><b><i> Hop:</i></b> {addition.hop_name}&nbsp; 
-             / <b><i> Amount:</i></b> {addition.amount} {addition.unit} &nbsp;
+          <p><i> Hop:</i><b> {addition.hop_name}</b>&nbsp; 
+             / <i> Amount:</i> <b>{addition.amount} {addition.unit}</b> &nbsp;
                <button onClick={() => handleComplete(addition.hop_id)}>✔️</button></p>
         </div>
       )
-      // :
-        // <h4>Done!</h4>
-      // }
     })}
     </>
   );

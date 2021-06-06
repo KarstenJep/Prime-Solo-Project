@@ -4,11 +4,10 @@
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 0 30px;
+  margin: 0 0 20px;
   background-color: #4caf50;
   overflow: hidden;
-  border-bottom: black solid 2px;
-  /* background-image: linear-gradient(to right, #357a38 , #6fbf73); */
+  border-bottom: black solid 1px;
 }
 
 .nav a {
@@ -31,7 +30,7 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
-  margin-left: .5rem;
+  margin-left: .7rem;
 
   /* these last two make the logout button in
   the nav bar look like another link */
@@ -41,5 +40,5 @@
 }
 
 .navLink:hover {
-  background-color: #46b000;
+  background-color: #6fbf73;
 }

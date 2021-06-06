@@ -113,6 +113,7 @@ Form Treatment
   padding: 10px;
   margin: 5px auto 20px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.4);
 }
@@ -134,23 +135,21 @@ h1, h2 {
 
 .formPanel2 {
   box-sizing: border-box;
-  /* align-items: center; */
   text-align: center;
   font-size: large;
   width: 400px;
   max-width: 90%;
   padding: 0px;
-  padding-bottom: .5px;
-  margin: 5px auto 10px;
+  padding-bottom: 0px;
+  margin: 10px auto 10px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  /* margin-right: 0px; */
 }
 
 .formPanel3 {
   box-sizing: border-box;
-  /* text-align: left; */
   font-size: large;
   width: 400px;
   max-width: 90%;
@@ -158,6 +157,7 @@ h1, h2 {
   margin: 10px auto 5px;
   background-color: #fffefe;
   border-radius: 10px;
+  border: solid black 1px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   padding-left: 0em;
   text-indent: .5em;
@@ -174,6 +174,7 @@ h1, h2 {
   padding: 0px;
   margin: 5px auto 5px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   margin-right: 10rem;
@@ -182,12 +183,13 @@ h1, h2 {
 .formPanel5 {
   box-sizing: border-box;
   text-align: center;
-  font-size: large;
+  font-size: xx-large;
   width: 400px;
-  max-width: 70%;
-  padding: 0px;
-  margin: 5px auto 5px;
+  max-width: 60%;
+  padding: 4px;
+  margin: 10px auto 5px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
 }
@@ -200,6 +202,7 @@ h1, h2 {
   padding: 4px;
   margin: 10px auto 5px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   padding-left: 1rem;

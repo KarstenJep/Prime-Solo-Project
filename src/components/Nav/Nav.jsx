@@ -20,9 +20,6 @@ function Nav() {
 
   return (
     <div className="nav">
-      {/* <Link to="/home">
-        <h2 className="nav-title">What's Hop'nin?</h2>
-      </Link> */}
       <div> 
         <Link className="navLink" to={loginLinkData.path}>
           <b>{loginLinkData.text}</b>
@@ -40,11 +37,8 @@ function Nav() {
               <b>Add Batch</b>
             </Link>
             <Link className="navLink" to="/schedule">
-              <b>Schedule</b>
+              <b>Outlook</b>
             </Link>
-            {/* <Link className="navLink" to="/inventory">
-              Inventory
-            </Link>  */}
             <LogOutButton className="navLink" />
           </>
         )}

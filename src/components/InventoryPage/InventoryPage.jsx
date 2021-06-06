@@ -13,9 +13,7 @@ function InventoryPage() {
 
   return (
     <div>
-      <form className="formPanel5" >
-        <h2>Hop Count</h2>
-      </form>
+        <h2 className="formPanel5">Hop Count</h2>
 
        {inventory.map(hops => {
          console.log('in hops map', hops)
