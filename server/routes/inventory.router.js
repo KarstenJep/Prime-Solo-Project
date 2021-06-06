@@ -19,4 +19,20 @@ router.get('/', (req, res) => {
         })
   });
 
+  router.get('/additions', (req, res) => {
+    console.log('in router inventory get', req.body);
+    const additionsQuery = `SELECT * FROM hops
+                            JOIN batch ON batch.id = hops.batch_id
+                            ORDER BY hops.date
+                            ;`
+    pool.query(additionsQuery)
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+            console.log('Error in GET inventory', err);
+        })
+  });
+
   module.exports = router;

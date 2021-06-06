@@ -20,7 +20,7 @@ function InventoryPage() {
        {inventory.map(hops => {
          console.log('in hops map', hops)
          return (
-           <p className="formPanel6"><b>{hops.hop_name} - {hops.sum} {hops.unit}</b></p>
+           <p className="formPanel6"><b>{hops.hop_name}</b> - <i>{hops.sum} {hops.unit}</i></p>
          )
        })}
    </div>

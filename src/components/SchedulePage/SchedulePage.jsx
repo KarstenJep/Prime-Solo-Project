@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 import InventoryPage from '../InventoryPage/InventoryPage';
+import AdditionsOutlook from '../AdditionsOutlook/AdditionsOutlook';
 
 
 function Schedule() {
@@ -54,6 +55,9 @@ function Schedule() {
         <BatchOutlook />
         }
         
+        { additionView &&
+        <AdditionsOutlook />
+        }
         
       </>  
     )       

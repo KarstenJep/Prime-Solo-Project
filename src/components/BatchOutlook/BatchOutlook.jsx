@@ -30,7 +30,7 @@ function BatchOutlook () {
             console.log('in schedule map', batch);
             return (
                     <p className="formPanel3" onClick={(e) => handleClick(batch)}>
-                        {batch.batch_num} - <b>{batch.name}</b> <i>{batch.style}</i> - Tank {batch.tank} </p>
+                        <b>{batch.batch_num}</b> - {batch.name} <i>{batch.style}</i> - Tank {batch.tank} </p>
             )
         })}     
     </div>
