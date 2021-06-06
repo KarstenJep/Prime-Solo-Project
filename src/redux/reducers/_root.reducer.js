@@ -6,6 +6,7 @@ import hops from './hops.reducer';
 import daily from './daily.reducer';
 import update from './update.reducer';
 import inventory from './inventory.reducer';
+import additions from './additions.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   daily,
   update,
   inventory,
+  additions,
 });
 
 export default rootReducer;

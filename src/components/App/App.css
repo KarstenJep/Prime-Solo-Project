@@ -7,7 +7,8 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background: url(https://media.gettyimages.com/photos/falling-green-hop-isolated-on-white-background-clipping-path-full-of-picture-id1073216670?b=1&k=6&m=1073216670&s=170667a&w=0&h=TNt5ia6giGI1SH5beou3LcBrMuIjNz31ijaL0pkVThg=) ;
+  background: url(https://media.gettyimages.com/photos/falling-green-hop-isolated-on-white-background-clipping-path-full-of-picture-id1073216670?b=1&k=6&m=1073216670&s=170667a&w=0&h=TNt5ia6giGI1SH5beou3LcBrMuIjNz31ijaL0pkVThg=);
+  /* background: url('https://images.unsplash.com/photo-1611004666332-0d1298c1096f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'); */
   background-size: cover;
 }
 
@@ -113,6 +114,7 @@ Form Treatment
   padding: 10px;
   margin: 5px auto 20px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.4);
 }
@@ -134,23 +136,21 @@ h1, h2 {
 
 .formPanel2 {
   box-sizing: border-box;
-  /* align-items: center; */
   text-align: center;
   font-size: large;
   width: 400px;
   max-width: 90%;
   padding: 0px;
-  padding-bottom: .5px;
-  margin: 5px auto 10px;
+  padding-bottom: 0px;
+  margin: 10px auto 10px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  /* margin-right: 0px; */
 }
 
 .formPanel3 {
   box-sizing: border-box;
-  /* text-align: left; */
   font-size: large;
   width: 400px;
   max-width: 90%;
@@ -158,9 +158,13 @@ h1, h2 {
   margin: 10px auto 5px;
   background-color: #fffefe;
   border-radius: 10px;
+  border: solid black 1px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  /* margin-right: 10px; */
+  padding-left: 0em;
+  text-indent: .5em;
 }
+
+
 
 .formPanel4 {
   box-sizing: border-box;
@@ -171,7 +175,37 @@ h1, h2 {
   padding: 0px;
   margin: 5px auto 5px;
   background-color: #fffefe;
+  border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   margin-right: 10rem;
+}
+
+.formPanel5 {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: xx-large;
+  width: 400px;
+  max-width: 60%;
+  padding: 4px;
+  margin: 10px auto 5px;
+  background-color: #fffefe;
+  border: solid black 1px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+}
+
+.formPanel6 {
+  box-sizing: border-box;
+  font-size: large;
+  width: 400px;
+  max-width: 70%;
+  padding: 4px;
+  margin: 10px auto 5px;
+  background-color: #fffefe;
+  border: solid black 1px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+  padding-left: 1rem;
+  text-indent: 2rem;
 }
