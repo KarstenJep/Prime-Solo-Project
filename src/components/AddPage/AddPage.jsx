@@ -11,7 +11,6 @@ import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui
 import Typography from '@material-ui/core/Typography';
 // import Image from './public/hops';
 import theme from '../theme'
-import './AddPage.css';
 import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
 
