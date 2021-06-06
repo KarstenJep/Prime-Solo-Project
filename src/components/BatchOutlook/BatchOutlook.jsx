@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -23,19 +22,18 @@ function BatchOutlook () {
 
   return (
     <div >
-        <form className="formPanel3">
-            <h1>&nbsp;Batches</h1>
+        <form className="formPanel5">
+            <h2>Batches</h2>
         </form>
 
         {batches.map((batch, i) => {
             console.log('in schedule map', batch);
             return (
                     <p className="formPanel3" onClick={(e) => handleClick(batch)}>
-                        <b>&nbsp;{batch.batch_num}</b> - {batch.name} {batch.style} - Tank {batch.tank} </p>
+                        {batch.batch_num} - <b>{batch.name}</b> <i>{batch.style}</i> - Tank {batch.tank} </p>
             )
-        })} 
-        
-        </div>
+        })}     
+    </div>
   );
 }
 

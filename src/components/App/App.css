@@ -159,8 +159,11 @@ h1, h2 {
   background-color: #fffefe;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  /* margin-right: 10px; */
+  padding-left: 0em;
+  text-indent: .5em;
 }
+
+
 
 .formPanel4 {
   box-sizing: border-box;
@@ -174,4 +177,31 @@ h1, h2 {
   border-radius: 10px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   margin-right: 10rem;
+}
+
+.formPanel5 {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
+  width: 400px;
+  max-width: 70%;
+  padding: 0px;
+  margin: 5px auto 5px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+}
+
+.formPanel6 {
+  box-sizing: border-box;
+  font-size: large;
+  width: 400px;
+  max-width: 70%;
+  padding: 4px;
+  margin: 10px auto 5px;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+  padding-left: 1rem;
+  text-indent: 2rem;
 }
