@@ -56,34 +56,19 @@ function AddPage() {
                 user_id: user.id
               }
 
-  // useEffect(() => {
-  //               dispatch({ type: 'SET_HOPS' });
-  //           }, []);
-
-  // console.log('in AP', user.id);
-
-  // let theme = createMuiTheme();
-
   const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
             margin: theme.spacing(.5),
-            // padding: theme.spacing(.5),
             flexGrow: 1,
             
           },
         },
-        // button: {
-        //   itemAlign: 'center',
-        //   color: theme.palette.text.primary,
-        // },
           paper: {
             padding: theme.spacing(.5),
             textAlign: 'center',
             color: theme.palette.text.primary,
-          },
-          
-          
+          },    
       }));
   
   const classes = useStyles();
@@ -128,12 +113,12 @@ function AddPage() {
 
   return (
     <>
-    <div>
+    <div >
+      <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
       <ThemeProvider theme={theme} className={classes.paper}>
-        <Typography className={classes.paper} variant="h4"><b>Add a Batch</b></Typography>
+        <Typography className={classes.paper} variant="h4"><b>Add Batch</b></Typography>
       </ThemeProvider>
-      <form className={classes.root} autoComplete="off" onSubmit={validateForm}>
-          <Grid container spacing={.25}>
+          <Grid container spacing={.5}>
               <Grid item xs={6}>
                   <TextField 
                       className="input"
@@ -180,10 +165,12 @@ function AddPage() {
                       size="small"
                     />
                 </Grid>
-                </Grid>
+              </Grid>
             </form>
-       
+          </div>
       <HopForm />
+
+      <div className="formPanel" >
       {hops.map((addition, i) => {
       console.log('in hop map', addition);
       return (
@@ -194,7 +181,7 @@ function AddPage() {
         </ThemeProvider>
       )
     })}
-    <Box ml={14}>
+    <Box >
       <Button 
         type="submit" 
         variant="contained" 

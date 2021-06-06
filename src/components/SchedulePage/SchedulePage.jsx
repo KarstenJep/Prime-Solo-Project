@@ -43,7 +43,7 @@ function Schedule() {
             <ButtonGroup variant="contained" aria-label="contained primary button group">
                 <Button color="primary" onClick={handleBatch}>Batch</Button>
                 <Button color="secondary" onClick={handleAdditions}>Additions</Button>
-                <Button color="primary" onClick={handleHops}>Hops</Button>
+                <Button color="primary" type="dark" onClick={handleHops}>Hops</Button>
             </ButtonGroup>
         </Box>
         

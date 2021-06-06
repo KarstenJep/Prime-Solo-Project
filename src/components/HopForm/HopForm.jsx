@@ -31,13 +31,15 @@ function HopForm() {
     const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
-            margin: theme.spacing(.5),
+            
+            margin: theme.spacing(1),
+            // padding: theme.spacing(1),
             // padding: theme.spacing(.5),
             flexGrow: 1,
           },
         },
         date: {
-            width:'90%',
+            width:'100%',
             padding: theme.spacing(.5),
             textAlign: 'center',
             color: theme.palette.text.secondary,
@@ -96,9 +98,9 @@ function HopForm() {
 
     return (
         <>
-                <form className={classes.root} autoComplete="off" onSubmit={validateForm}>
+                <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
                 <ThemeProvider theme={theme} className={classes.paper}>
-                    <Typography className={classes.paper} variant="h6"><b>Hop Additions</b></Typography>
+                    <Typography className={classes.paper} variant="h6"><b>Add Hop Addition</b></Typography>
                 </ThemeProvider>
                 <Grid container spacing={.25}>
                     <Grid item xs={6}>
@@ -150,7 +152,7 @@ function HopForm() {
                             <MenuItem value="lbs">lbs</MenuItem>
                         </TextField>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={2} p={1}>
                     {/* <Icon 
                     style={{ fontSize: 30 }}
                     type="submit"
