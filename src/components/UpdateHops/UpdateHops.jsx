@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 
 function UpdateHops() {
   const dispatch = useDispatch();
   const update = useSelector((store) => store.update);
-  const [count, setCount] = useState(0)
 
   // update.hops.map(hop => {
   //   console.log('in update hops', hop);
@@ -44,31 +45,46 @@ function UpdateHops() {
         
         return (
           <>
-            <h5 key={addition.hop_id}>Hop Addition</h5>
-            <input
-                
-                // value={hopName}
-                placeholder="Hop Name"
-                // onChange={(e) => handleChange(e)}
+            <h3 key={addition.hop_id}>Hop Addition</h3>
+            <Grid container spacing={1}>
+              <Grid item xs={6}>
+            <TextField
+                label="Hop Name"
+                variant="outlined"
                 value={addition.hop_name}
                 onChange={(e) => setHopName(e.target.value)}
+                size="small"
                 />
-            <input
+                </Grid>
+                <Grid item xs={6}>
+            <TextField
                 value={addition.amount}
                 type="number"
-                placeholder="Amount"
+                variant="outlined"
+                label="Amount"
                 onChange={(e) => setAmount(e.target.value)}
+                size="small"
                 />
-            <input
+                </Grid>
+                <Grid item xs={6}>
+            <TextField
                 value={addition.unit}
-                placeholder="Unit"
+                variant="outlined"
+                label="Unit"
                 onChange={(e) => setUnit(e.target.value)}
+                size="small"
                 />
-            <input
+                </Grid>
+                <Grid item xs={6}>
+            <TextField
                 value={moment(addition.date).format('LL')}
+                variant="outlined"
                 type=""
                 onChange={(e) => setDate(e.target.value)}
+                size="small"
                 />
+                </Grid>
+                </Grid>
             {/* <button type="submit" >Save Edit(s)</button> */}
           </>
         )

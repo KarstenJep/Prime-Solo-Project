@@ -10,7 +10,8 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 
 function UpdatePage () {
@@ -63,7 +64,7 @@ function UpdatePage () {
     const deleteBatch = (id) => {
         console.log('in delete batch', id);
         dispatch({ type: 'DELETE_BATCH', payload: id });
-        history.push('/schedule');
+        history.push(`/schedule`);
     }
 
     const handleSaveEdit = (event) => {
@@ -79,61 +80,76 @@ function UpdatePage () {
         dispatch({type: 'UPDATE_BATCH', payload: updatedBatch})
 
         setEditMode(false)
-        history.push('/schedule')
+        history.push(`/schedule`)
     }
 
     const completed = () => {}
 
     return (
         <>
-        
-        {/* <h3>Batch:</h3> */}
-        {/* <button onClick={() => {history.push('/schedule')}}>Back</button> */}
         { editMode === false &&
             <>
             <Box ml={10}>
-            <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-                <Button onClick={handleEdit}>Edit</Button>
-                <Button>&nbsp;✔️&nbsp;</Button>
+            <ButtonGroup variant="contained" aria-label="contained primary button group">
+                <Button onClick={handleEdit} color="primary">Edit</Button>
+                <Button color="secondary">&nbsp;✔️&nbsp;</Button>
                 <Button 
+                color="primary"
                 startIcon={<DeleteIcon />}
                 onClick={() => deleteBatch(update.id)}>Batch</Button>
             </ButtonGroup>
             </Box>
-            {/* <button onClick={handleEdit}>Edit</button> */}
             </>
             }
-        {/* <button onClick={() => deleteBatch(update.id)}>Delete Batch</button> */}
         { update && editMode ?
         <form className="formPanel" onSubmit={handleSaveEdit}>
             <Button 
+            color="primary"
             startIcon={<SaveIcon />}
             variant="contained" type="submit" >Save</Button>
-            <h5>Batch</h5>
-            <input 
+            <h3>Batch</h3>
+            <Grid container spacing={1}>
+              <Grid item xs={6}>
+            <TextField
                 value={name}
+                variant="outlined"
                 type="text"
-                placeholder="Beer Name"
+                label="Beer Name"
                 onChange={(e) => setName(e.target.value)}
+                size="small"
             />
-            <input
+            </Grid>
+            <Grid item xs={6}>
+            <TextField 
                 value={style}
+                variant="outlined"
                 type="text"
-                placeholder="Style"
+                label="Style"
                 onChange={(e) => setStyle(e.target.value)}
+                size="small"
             />
-            <input
+            </Grid>
+            <Grid item xs={6}>
+            <TextField 
                 value={tank}
+                variant="outlined"
                 type="number"
-                placeholder="Tank #"
+                label="Tank #"
                 onChange={(e) => setTank(e.target.value)}
+                size="small"
             />
-            <input
+            </Grid>
+            <Grid item xs={6}>
+            <TextField 
                 value={batch}
                 type="number"
-                placeholder="Batch #"
+                variant="outlined"
+                label="Batch #"
                 onChange={(e) => setBatch(e.target.value)}
+                size="small"
             />
+            </Grid>
+            </Grid>
             <UpdateHops />
          </form>
         :
@@ -141,35 +157,27 @@ function UpdatePage () {
             <div className="formPanel">
                 <>
                 <h2>{update.name} {update.style}</h2>
-                <p><b><i> Batch: </i></b>{update.batch_num} /<b><i> Tank: </i></b>{update.tank} </p> 
+                <p><i> Batch: </i><b>{update.batch_num}</b> /<i> Tank: </i><b>{update.tank}</b> </p> 
                 {update.hops.map(addition => {
                     console.log('in addition map', addition);
                     return (
-                <p><b><i> Hop:</i></b> {addition.hop_name}&nbsp;
-                / <b><i> Amount:</i></b> {addition.amount} {addition.unit} 
+                <p><i> Hop: </i><b>{addition.hop_name}</b>&nbsp;
+                / <i> Amount:</i> <b>{addition.amount} {addition.unit}</b>  
                
-                 
-                    {/* <button onClick={completed}>✔️</button> */}
-                 {/* <button onClick={() => deleteHops(addition.hop_id, addition.batch_id)}>Delete Addition</button></p> */}
                  <IconButton 
                     aria-label="delete" 
                     variant="contained"
-                    // className={classes.margin}
                     onClick={() => deleteHops(addition.hop_id, addition.batch_id)}
                     >
                     <DeleteIcon />
                 </IconButton>
                 </p>
-                
                     )
                 })}
               </>  
             </div>
-        
         } 
         {/* End of conditional rendering */}
-        
-
     </>
     )
 }

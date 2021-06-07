@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-// import Image from './public/hops';
 import theme from '../theme'
 import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
@@ -111,12 +110,19 @@ function AddPage() {
     setBatch('')
   }
 
+  const fillForm = () => {
+    setName('Cabin Daze')
+    setStyle('IPA')
+    setTank('9')
+    setBatch('345')
+  }
+
   return (
     <>
     <div >
       <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
       <ThemeProvider theme={theme} className={classes.paper}>
-        <Typography className={classes.paper} variant="h4"><b>Add Batch</b></Typography>
+        <Typography onClick={fillForm}className={classes.paper} variant="h4"><b>Add Batch</b></Typography>
       </ThemeProvider>
           <Grid container spacing={.5}>
               <Grid item xs={6}>
@@ -195,7 +201,6 @@ function AddPage() {
           Save All
         </Button>
       </Box>
-      
       </div>
     </>
   );
