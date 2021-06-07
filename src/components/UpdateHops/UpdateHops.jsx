@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment';
-
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
@@ -9,7 +8,6 @@ import Grid from '@material-ui/core/Grid';
 function UpdateHops() {
   const dispatch = useDispatch();
   const update = useSelector((store) => store.update);
-  const [count, setCount] = useState(0)
 
   // update.hops.map(hop => {
   //   console.log('in update hops', hop);
