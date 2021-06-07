@@ -96,11 +96,17 @@ function HopForm() {
         setDate('')
     }
 
+    const fillForm = () => {
+        setHopName('Citra')
+        setAmount('80')
+        setUnit('oz')
+    }
+
     return (
         <>
                 <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
                 <ThemeProvider theme={theme} className={classes.paper}>
-                    <Typography className={classes.paper} variant="h6"><b>Add Hop Addition</b></Typography>
+                    <Typography onClick={fillForm} className={classes.paper} variant="h6"><b>Add Hop Addition</b></Typography>
                 </ThemeProvider>
                 <Grid container spacing={.25}>
                     <Grid item xs={6}>
