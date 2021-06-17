@@ -6,12 +6,10 @@ function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const daily = useSelector((store) => store.daily);
-  const [complete, setComplete] = useState('false');
 
   // Import and format current date via moment.js
   const date = moment().format('YYYY-MM-DD');
   const today = moment().format("dddd, MMMM Do");
-  
   // console.log('in home', today, daily, user);
  
   // on page load, get list of daily hop additions from the database
@@ -27,10 +25,12 @@ function HomePage() {
 
   return (
     <>
+      {/* Current Date as title */}
       <div>
         <h2 className="formPanel5"><b>{today}</b></h2>
       </div>
 
+      {/* Daily Hop additions list */}
       {daily.map(addition => {
         // console.log('in home map', addition);
         if(addition.complete === false ) {
