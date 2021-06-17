@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+// Material UI imports
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box'
@@ -17,6 +16,7 @@ function LoginForm() {
   const login = (event) => {
     event.preventDefault();
 
+    // Checking for state
     if (username && password) {
       dispatch({
         type: 'LOGIN',
@@ -32,14 +32,18 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
+      {/* Logo */}
       <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="50" />
+      {/* Title */}
       <h1>What's Hop'nin?</h1>
+
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
+      
+      {/* Username */}
       <Box p={1} >
           <TextField
             className="input"
@@ -52,8 +56,8 @@ function LoginForm() {
             size="small"
           />
         </Box>
-      </div>
-      <div>
+      
+      {/* Password */}
       <Box p={1} >
           <TextField
             type="password"
@@ -65,12 +69,20 @@ function LoginForm() {
             size="small"
           />
         </Box>
-      </div>
+     
+     {/* Login Button */}
       <Box p={1} >
-        <Button size="large" type="submit" name="submit" value="Log In" variant="contained" color="primary" font="primary" >
+        <Button 
+          size="large" 
+          type="submit" 
+          value="Log In" 
+          variant="contained" 
+          color="primary">
           Login
         </Button>
       </Box>
+
+      {/* Register Link */}
       <center>
         <button
           type="button"
