@@ -2,8 +2,8 @@ import { put } from '@redux-saga/core/effects';
 import axios from 'axios';
 
 function* completeHop( action ) {
-    // Sent updates to the DB via PUT
-    console.log('in complete saga', action.payload, action);
+    // Send completed addition to the DB via PUT
+    console.log('in complete saga', action);
     try {
         yield axios.put( `/api/update/complete/${action.payload}`, action.payload );
         // Get all batches from server, including update. Sets daily reducer.
