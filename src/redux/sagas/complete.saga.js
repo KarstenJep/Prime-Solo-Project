@@ -3,11 +3,11 @@ import axios from 'axios';
 
 function* completeHop( action ) {
     // Sent updates to the DB via PUT
-    console.log('in complete saga', action.payload);
+    console.log('in complete saga', action.payload, action);
     try {
         yield axios.put( `/api/update/complete/${action.payload}`, action.payload );
         // Get all batches from server, including update. Sets daily reducer.
-        // yield put({type: 'FETCH_DAILY'});
+        yield put({type: 'FETCH_DAILY', payload: action.date});
         // // Update the update reducer
         // yield put({type: 'SET_UPDATE', payload: action.payload });
 
