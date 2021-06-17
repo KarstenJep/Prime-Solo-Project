@@ -6,20 +6,20 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-// GET route for batch (add hop_addition) tables
+// GET route for batches
 router.get('/', rejectUnauthenticated, (req, res) => {
     pool.query(`
     SELECT
-	batch.*,
-			CASE WHEN count(h) = 0 THEN ARRAY[]::json[] ELSE array_agg(h.hops) END AS hops,
-			json_build_object('id', "user".id, 'username', "user".username) as "user"
-	FROM batch
-	JOIN "user" ON batch.user_id = "user".id
-	LEFT OUTER JOIN (
-		SELECT batch_id, json_build_object('hop_id', hops.hop_id, 'batch_id', hops.batch_id, 'hop_name', hops.hop_name, 'amount', hops.amount, 'unit', hops.unit, 'date', hops.date, 'complete', hops.complete) as hops
-		FROM hops ORDER BY hops.hop_id
-		) h on h.batch_id=batch.id
-	GROUP BY batch.id, batch.name, batch.batch_num, batch.tank, "user".id, "user".username ORDER BY batch.batch_num
+    batch.*,
+        CASE WHEN count(h) = 0 THEN ARRAY[]::json[] ELSE array_agg(h.hops) END AS hops,
+        json_build_object('id', "user".id, 'username', "user".username) as "user"
+    FROM batch
+    JOIN "user" ON batch.user_id = "user".id
+    LEFT OUTER JOIN (
+      SELECT batch_id, json_build_object('hop_id', hops.hop_id, 'batch_id', hops.batch_id, 'hop_name', hops.hop_name, 'amount', hops.amount, 'unit', hops.unit, 'date', hops.date, 'complete', hops.complete) as hops
+      FROM hops ORDER BY hops.hop_id
+      ) h on h.batch_id=batch.id
+    GROUP BY batch.id, batch.name, batch.batch_num, batch.tank, "user".id, "user".username ORDER BY batch.batch_num
     ;`)
         .then((results) => {
             res.send(results.rows);
@@ -31,7 +31,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         })
   });
 
-  // POST route code here
+  // POST route for Add Batch
   router.post('/', rejectUnauthenticated, (req, res) => {
     console.log(req.body);
     const beer = req.body.beer
@@ -50,6 +50,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         INSERT INTO "hops" ("batch_id", "hop_name", "amount", "unit", "date")
         VALUES ($1, $2, $3, $4, $5)`
 
+        // .map through hop additions for 2nd query
         hops.map(addition => {
             pool.query(hopsQuery, [newBatchId, addition.hop_name, addition.amount, addition.unit, addition.date])
             .then(result => {
@@ -60,14 +61,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                 // res.sendStatus(500)
             })
         }) // end of .map
-    }) // Catch for batch query
+    }) 
     .catch(err => {
         console.log(err);
         res.sendStatus(500)
     })
   });
 
-// removed  rejectUnauthenticated
+  // Delete for batch plus hops
   router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete batch route', req.params.id, req.user.id);
     const queryText = 'DELETE FROM batch WHERE id=$1 AND user_id=$2;';
@@ -82,6 +83,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       });
   });
 
+  // Delete for just hops
   router.delete('/hops/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete hops route', req.params.id, req.user.id);
     const queryText = 'DELETE FROM hops WHERE hop_id=$1 RETURNING batch_id;';
@@ -89,7 +91,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       .then((result) => { 
         console.log('Deleted hops', req.body, result.rows[0])
         res.send(result.rows[0])
-        // res.sendStatus(200) 
+        res.sendStatus(200) 
        })
       .catch(err => {
         console.log('Error in deleting item', err);

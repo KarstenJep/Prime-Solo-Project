@@ -34,8 +34,8 @@ CREATE TABLE "hops" (
 -- Test data below
 
 INSERT INTO "user" ("username", "password", "number")
-VALUES ('kjepsen86@gmail.com', 'snowboard', 6514429080),
-('karstenjepsen@q.com', 'karsten', 6514429080);
+VALUES ('kjepsen86@gmail.com', 'snowboard'),
+('karstenjepsen@q.com', 'karsten');
 
 INSERT INTO "batch" ("name", "batch_num", "tank", "user_id")
 VALUES ('Cabin Daze IPA', 333, 8, 1),
@@ -52,23 +52,19 @@ VALUES ('Citra', 80, 'oz', '5-31-2021', 1),
 ('Julius', 50, 'oz', '6-6-2021', 3),
 ('Strata', 100, 'oz', '6-1-2021', 4);
 
-SELECT movies.title, movies.description, ARRAY_AGG(genres.name) as genres, movies.poster FROM movies
-JOIN movies_genres ON movies.id = movies_genres.movie_id
-JOIN genres ON movies_genres.genre_id = genres.id
-WHERE movies.id = 11 GROUP BY movies.title, movies.description, movies.poster;
-
 --- schedule
-SELECT batch.name, batch."tank", batch."batch_num", ARRAY_AGG(hops.hop_id) as hopid, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
-FROM batch
-JOIN hops ON batch.id = hops.batch_id
-GROUP BY batch.name, batch."tank", batch."batch_num"
-;
+SELECT
+	batch.*,
+			CASE WHEN count(h) = 0 THEN ARRAY[]::json[] ELSE array_agg(h.hops) END AS hops,
+			json_build_object('id', "user".id, 'username', "user".username) as "user"
+	FROM batch
+	JOIN "user" ON batch.user_id = "user".id
+	LEFT OUTER JOIN (
+		SELECT batch_id, json_build_object('hop_id', hops.hop_id, 'batch_id', hops.batch_id, 'hop_name', 		hops.hop_name, 'amount', hops.amount, 'unit', hops.unit, 'date', hops.date, 'complete', 				hops.complete) as hops
+		FROM hops ORDER BY hops.hop_id
+		) h on h.batch_id=batch.id
+	GROUP BY batch.id, batch.name, batch.batch_num, batch.tank, "user".id, "user".username ORDER BY batch.batch_num;
 
-SELECT batch.id, batch.name, batch.tank, batch.batch_num, ARRAY_AGG(hops.hop_id) as hop_id, ARRAY_AGG(hops.hop_name) as hop_name, ARRAY_AGG(hops.amount) as amount, ARRAY_AGG(hops.unit) as unit, ARRAY_AGG(hops.date) as date
-            FROM batch
-            JOIN hops ON batch.id = hops.batch_id
-            GROUP BY batch.id, batch.name, batch.tank, batch.batch_num
-            ORDER BY batch_num
 
 -- daily hops
 SELECT * FROM batch
