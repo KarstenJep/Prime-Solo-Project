@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET route for batch + hop_additions by ID
+// GET route for batch + hop_additions by ID for editing
 router.get('/:id', (req, res) => {
     console.log('in router get', req.params.id);
     const getQuery = `SELECT 
@@ -28,6 +28,7 @@ router.get('/:id', (req, res) => {
         })
   });
 
+  // PUT to update batch after editing
   router.put('/', (req, res) => {
       console.log('Checking put', req.params.id, 'body=', req.body);
       const updateQuery = `UPDATE batch SET name=$1, style=$2, tank=$3, batch_num=$4 WHERE id=$5`
@@ -42,6 +43,7 @@ router.get('/:id', (req, res) => {
         })
   })
 
+  // PUT for completing hop addition
   router.put('/complete/:id', (req, res) => {
     console.log('Checking put', req.params.id, 'body=', req.body);
     const completeQuery = `UPDATE hops SET complete=true WHERE hop_id=$1`

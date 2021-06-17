@@ -5,15 +5,14 @@ const {
     rejectUnauthenticated,
   } = require('../modules/authentication-middleware');
 
-// GET route for batch (add hop_addition) tables
+// GET route for batches by date
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router get', req.params.id);
     const dailyQuery = `SELECT * FROM batch
                         JOIN hops ON batch.id = hops.batch_id
                         WHERE hops."date" = $1;
                         ;`
-    pool
-    .query(dailyQuery, [req.params.id])
+    pool.query(dailyQuery, [req.params.id])
         .then((results) => {
             res.send(results.rows);
         })
