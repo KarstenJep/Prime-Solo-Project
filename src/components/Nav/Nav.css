@@ -7,7 +7,7 @@
   margin: 0 0 20px;
   background-color: #4caf50;
   overflow: hidden;
-  border-bottom: black solid 1px;
+  border-bottom: black solid 2px;
 }
 
 .nav a {
@@ -27,9 +27,9 @@
   color: #1f1f1f;
   background-color: #4caf50;
   text-align: center;
-  padding: 24px 10px;
+  padding: 14px 21px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 22px;
   margin-left: .7rem;
 
   /* these last two make the logout button in

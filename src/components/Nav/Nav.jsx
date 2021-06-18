@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import HomeIcon from '@material-ui/icons/Home';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 
 function Nav() {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   let loginLinkData = {
@@ -14,7 +22,7 @@ function Nav() {
 
   if (user.id != null) {
     loginLinkData.path = '/home';
-    loginLinkData.text = 'Home';
+    loginLinkData.text = < HomeIcon style={{ fontSize: 34 }}/>;
   }
 
 
@@ -34,12 +42,16 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/add">
-              <b>Add Batch</b>
+              <AddCircleIcon style={{ fontSize: 34 }}/>
             </Link>
             <Link className="navLink" to="/schedule">
-              <b>Outlook</b>
+              <DateRangeIcon style={{ fontSize: 34 }}/>
             </Link>
-            <LogOutButton className="navLink" />
+            <Link
+              className="navLink"
+              onClick={() => dispatch({ type: 'LOGOUT' })}>
+              <ExitToAppIcon style={{ fontSize: 34 }}/>
+             </Link>
           </>
         )}
       </div>
