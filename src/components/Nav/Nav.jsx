@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
+// Material UI Icon imports
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DateRangeIcon from '@material-ui/icons/DateRange';
