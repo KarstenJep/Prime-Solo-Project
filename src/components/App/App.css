@@ -139,13 +139,13 @@ h1, h2 {
   text-align: center;
   font-size: large;
   width: 400px;
-  max-width: 90%;
+  max-width: 80%;
   padding: 0px;
   padding-bottom: 0px;
   margin: 10px auto 10px;
   background-color: #fffefe;
   border: solid #4caf50 2px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
 }
 
@@ -157,7 +157,7 @@ h1, h2 {
   padding: 4px;
   margin: 10px auto 5px;
   background-color: #fffefe;
-  border-radius: 10px;
+  border-radius: 15px;
   border: solid #4caf50 2px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   padding-left: 0em;
@@ -176,7 +176,7 @@ h1, h2 {
   margin: 5px auto 5px;
   background-color: #fffefe;
   border: solid #4caf50 2px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   margin-right: 10rem;
 }
@@ -191,7 +191,7 @@ h1, h2 {
   margin: 10px auto 5px;
   background-color: #fffefe;
   border: solid #4caf50 2px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
 }
 
@@ -204,7 +204,7 @@ h1, h2 {
   margin: 10px auto 5px;
   background-color: #fffefe;
   border: solid #4caf50 2px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
   padding-left: 1rem;
   text-indent: 2rem;

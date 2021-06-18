@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import moment from 'moment';
+import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -37,16 +39,24 @@ function HomePage() {
           return (
             <div className="formPanel2" key={addition.hop_id}>
               <h3><b>{addition.name} {addition.style}</b></h3>
-              <p><i>Tank:</i> <b>{addition.tank}</b> / <i>Batch:</i> <b>{addition.batch_num}</b></p>
-              <p><i>Hop:</i> <b>{addition.hop_name}</b> / <i>Amount:</i> <b>{addition.amount} {addition.unit}</b>&nbsp;
-              <button onClick={() => handleComplete(addition.hop_id)}>✔️</button></p>
+              <p><i>Tank:</i> <b>{addition.tank}</b></p>
+              <p><i>Addition:</i> <b>{addition.hop_name} {addition.amount}{addition.unit}</b></p>
+              <CheckBoxOutlinedIcon
+                color="primary"
+                style={{ fontSize: 45 }}
+                onClick={() => handleComplete(addition.hop_id)}
+                />
             </div>
           )
       }
         else {
             return (
               <div className="formPanel2" key={addition.hop_id}>
-                <h3><b>{addition.name} {addition.style}&nbsp; ✔️</b></h3> 
+                <h3><b>{addition.name} {addition.style}</b></h3>
+                <CheckBoxIcon 
+                  color="primary"
+                  style={{ fontSize: 45 }}
+                />
               </div>
             )
         }
