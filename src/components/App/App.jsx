@@ -5,18 +5,17 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import UpdatePage from '../UpdatePage/UpdatePage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import SchedulePage from '../SchedulePage/SchedulePage';
+import OutlookPage from '../OutlookPage/OutlookPage';
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import AddPage from '../AddPage/AddPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import InventoryPage from '../InventoryPage/InventoryPage';
+import { useDispatch } from 'react-redux';
 import './App.css';
 
 
@@ -57,27 +56,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows SchedulePage else shows LoginPage
+            // logged in shows OutlookPage else shows LoginPage
             exact
             path="/schedule"
           >
-            <SchedulePage />
+            <OutlookPage />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows SchedulePage else shows LoginPage
+            // logged in shows UpdatePage else shows LoginPage
             exact
             path="/update/:id"
           >
             <UpdatePage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InventoryPage else shows LoginPage
-            exact
-            path="/inventory"
-          >
-            <InventoryPage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

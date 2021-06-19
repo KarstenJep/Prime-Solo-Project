@@ -1,52 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { useHistory } from "react-router";
-import moment, { updateLocale } from 'moment';
+import moment from 'moment';
 import HopForm from '../HopForm/HopForm';
-import { makeStyles } from '@material-ui/core/styles';
+// Material UI imports for inputs and buttons
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import theme from '../theme'
 import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(.5),
-      // padding: theme.spacing(.5),
-      flexGrow: 1,
-    },
-  },
-  button: {
-    itemAlign: 'center',
-    color: theme.palette.background.primary,
-  },
-    paper: {
-      padding: theme.spacing(.5),
-      textAlign: 'center',
-      color: theme.palette.text.primary,
-    },
-}));
-
-
-
 function AddPage() {
+  
+  const dispatch = useDispatch();
+  const hops = useSelector((store) => store.hops);
+  const user = useSelector((store) => store.user);
+  // Using state to capture inputs
   const [name, setName] = useState('');
   const [style, setStyle] = useState('');
   const [tank, setTank] = useState('');
   const [batch, setBatch] = useState('');
+  // Using state to validate inputs
   const [nameError, setNameError] = useState(false);
   const [styleError, setStyleError] = useState(false);
   const [tankError, setTankError] = useState(false);
   const [batchError, setBatchError] = useState(false);
-  const hops = useSelector((store) => store.hops);
-  const user = useSelector((store) => store.user);
-  const dispatch = useDispatch();
-
+  
+  // Capturing batch inputs in state, collecting it in an object to send to DB
   const beer = {
                 name: name,
                 style: style,
@@ -55,23 +35,7 @@ function AddPage() {
                 user_id: user.id
               }
 
-  const useStyles = makeStyles((theme) => ({
-        root: {
-          '& > *': {
-            margin: theme.spacing(.5),
-            flexGrow: 1,
-            
-          },
-        },
-          paper: {
-            padding: theme.spacing(.5),
-            textAlign: 'center',
-            color: theme.palette.text.primary,
-          },    
-      }));
-  
-  const classes = useStyles();
-
+  // Validating inputs using state
   const validateForm = (e) => {
     e.preventDefault();
     setNameError(false)
@@ -95,9 +59,9 @@ function AddPage() {
         submitForm(e);
     }
 }
-
+  // Handler to submit batch info and hop addition info and send to DB in two seperate objects
   const submitForm = () => {
-      console.log('in submitform', {beer, hops});
+      // console.log('in submitform', {beer, hops});
       dispatch({type: 'ADD_BATCH', payload: {
         beer,
         hops
@@ -109,7 +73,7 @@ function AddPage() {
     setTank('')
     setBatch('')
   }
-
+  // Auto fill form for presentation, quick testing
   const fillForm = () => {
     setName('Cabin Daze')
     setStyle('IPA')
@@ -119,16 +83,15 @@ function AddPage() {
 
   return (
     <>
-    <div >
-      <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
-      <ThemeProvider theme={theme} className={classes.paper}>
-        <Typography onClick={fillForm}className={classes.paper} variant="h4"><b>Add Batch</b></Typography>
-      </ThemeProvider>
-          <Grid container spacing={.5}>
+      <div >
+        <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
+          <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Typography onClick={fillForm} variant="h4"><b>Add Batch</b></Typography>
+              </Grid>
               <Grid item xs={6}>
-                  <TextField 
-                      className="input"
-                      className={classes.paper}
+                  <TextField
+                      // Name
                       label="Name"
                       variant="outlined"
                       value={name}
@@ -138,8 +101,8 @@ function AddPage() {
                     />
               </Grid>
               <Grid item xs={6}>
-                  <TextField 
-                      className={classes.paper}
+                  <TextField
+                      // Style
                       label="Style"
                       variant="outlined"
                       value={style}
@@ -149,8 +112,8 @@ function AddPage() {
                     />
               </Grid>
               <Grid item xs={6}>
-                  <TextField 
-                      className={classes.paper}
+                  <TextField
+                      // Batch Number
                       label="Batch #"
                       type="number"
                       variant="outlined"
@@ -161,8 +124,8 @@ function AddPage() {
                     />
               </Grid>
               <Grid item xs={6}>
-                  <TextField 
-                      className={classes.paper}
+                  <TextField
+                      // Tank Number
                       label="Tank"
                       variant="outlined"
                       value={tank}
@@ -176,25 +139,24 @@ function AddPage() {
           </div>
       <HopForm />
 
+      {/* Render added hop additions */}
       <div className="formPanel" >
-      {hops.map((addition, i) => {
-      console.log('in hop map', addition);
-      return (
-        <ThemeProvider theme={theme} className={classes.paper}>
-          <Typography className={classes.paper} variant="h6">
-            {moment(addition.date).format('MM/DD/YYYY')} - {addition.hop_name} - {addition.amount}{addition.unit}
-          </Typography>
-        </ThemeProvider>
-      )
-    })}
+        {hops.map((addition, i) => {
+        // console.log('in hop map', addition);
+        return (
+            <Typography  variant="h6">
+              {moment(addition.date).format('MM/DD/YYYY')} - {addition.hop_name} - {addition.amount}{addition.unit}
+            </Typography>
+        )
+      })}
+    
+    {/* Save batch and hop additions */}
     <Box >
       <Button 
         type="submit" 
         variant="contained" 
         color="primary"
         size="large" 
-        className={classes.button} 
-        padding="5"
         onClick={submitForm}
         startIcon={<SaveIcon />}
         >

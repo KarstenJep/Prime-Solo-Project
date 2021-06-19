@@ -8,13 +8,13 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 
 
-function Schedule() {
+function Outlook() {
 
     const [batchView, setBatchView] = useState(true);
     const [hopView, setHopView] = useState(false);
     const [additionView, setAdditionView] = useState(false);
 
-    // The 3 handlers below check state to determin which component/view to display
+    // The 3 handlers below set state to trigger which component/view to display
     const handleBatch = () => {
         setBatchView(true)
         setHopView(false)
@@ -59,4 +59,4 @@ function Schedule() {
     )       
 }
 
-export default Schedule;
+export default Outlook;
