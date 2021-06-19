@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
 import UpdateHops from '../UpdateHops/UpdateHops';
-
+// Material UI imports 
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
@@ -25,17 +24,6 @@ function UpdatePage () {
     const [style, setStyle] = useState('');
     const [tank, setTank] = useState('');
     const [batch, setBatch] = useState('');
-
-    // const useStyles = makeStyles((theme) => ({
-    //     margin: {
-    //       margin: theme.spacing(1),
-    //     },
-    //     extendedIcon: {
-    //       marginRight: theme.spacing(1),
-    //     },
-    //   }));
-
-    // const classes = useStyles();
 
     const {id} = useParams();
 

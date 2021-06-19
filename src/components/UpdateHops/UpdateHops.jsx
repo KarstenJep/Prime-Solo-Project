@@ -8,24 +8,11 @@ import Grid from '@material-ui/core/Grid';
 function UpdateHops() {
   const dispatch = useDispatch();
   const update = useSelector((store) => store.update);
-
-  // update.hops.map(hop => {
-  //   console.log('in update hops', hop);
-  //   const [hopName{hop_id}, setHopName] = useState('');
-  //   const [amount, setAmount] = useState('');
-  //   const [unit, setUnit] = useState('');
-  //   const [date, setDate] = useState('');
-  // })
   const [hopName, setHopName] = useState('');
   const [amount, setAmount] = useState('');
   const [unit, setUnit] = useState('');
   const [date, setDate] = useState('');
-  console.log('in update hops', update);
-
-  // setHopName(update.hops.hop_name)
-  // setAmount(update.hops.amount)
-  // setUnit(update.hops.unit)
-  // setDate(update.hops.date)
+  // console.log('in update hops', update);
 
   const handleChange = (e) => {
     e.preventDefault();
