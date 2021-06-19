@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-function InventoryPage() {
+function HopCount() {
   const dispatch = useDispatch();
-  const inventory = useSelector((store) => store.inventory);
-  console.log('in inventory', inventory);
+  const count = useSelector((store) => store.inventory);
+  // console.log('in hopCount', count);
 
+  // on page load, get list of inventory from the database
   useEffect(() => {
-    // on page load, get list of inventory from the database
     dispatch({ type: 'FETCH_INVENTORY' });
   }, [])
 
   return (
     <div>
-        <h2 className="formPanel5">Hop Count</h2>
-
-       {inventory.map(hops => {
-         console.log('in hops map', hops)
+      <h2 className="formPanel5">Hop Count</h2>
+      
+      {count.map(hops => {
+        //  console.log('in hops map', hops)
          return (
            <p className="formPanel6"><b>{hops.hop_name}</b> - <i>{hops.sum} {hops.unit}</i></p>
          )
@@ -25,4 +25,4 @@ function InventoryPage() {
   );
 }
 
-export default InventoryPage;
+export default HopCount;

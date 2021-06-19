@@ -1,59 +1,46 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+// Material UI imports for inputs and buttons
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box'
-import Icon from '@material-ui/core/Icon';
+import AddIcon from '@material-ui/icons/Add';
 
 
 
 function HopForm() {
+
+    const dispatch = useDispatch();
+    // Using state to capture hop addition inputs
     const [hopName, setHopName] = useState('');
+    const [date, setDate] = useState('');
     const [amount, setAmount] = useState('');
     const [unit, setUnit] = useState('');
-    const [date, setDate] = useState('');
+    // Using state to validate inputs
     const [hopNameError, setHopNameError] = useState(false);
     const [amountError, setAmountError] = useState(false);
     const [unitError, setUnitError] = useState(false);
     const [dateError, setDateError] = useState(false);
-    const dispatch = useDispatch();
 
-    let theme = createMuiTheme();
 
     const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
-            
             margin: theme.spacing(1),
-            // padding: theme.spacing(1),
-            // padding: theme.spacing(.5),
             flexGrow: 1,
           },
         },
         date: {
             width:'100%',
-            padding: theme.spacing(.5),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
         },
-          paper: {
-            padding: theme.spacing(.5),
-            textAlign: 'center',
-            color: theme.palette.text.primary,
-          },
       }));
       
-    //   export default function HopForm() {
     const classes = useStyles();
-
+    
+    // Validating inputs by checking state
     const validateForm = (e) => {
         e.preventDefault();
         setHopNameError(false)
@@ -78,9 +65,10 @@ function HopForm() {
         }
     }
 
+    // Handler so save hop addition info into an object, and send to reducer
     const addHops = (e) => {
             e.preventDefault();
-            console.log('Clicked add hops', hopName, amount, unit, date);
+            // console.log('Clicked add hops', hopName, amount, unit, date);
             dispatch({
                 type: 'SET_HOPS', payload: {
                                 hop_name: hopName, 
@@ -95,23 +83,23 @@ function HopForm() {
         setUnit('')
         setDate('')
     }
-
+    // Handler to autofill form for presentation and quick testing
     const fillForm = () => {
         setHopName('Citra')
-        setAmount('80')
-        setUnit('oz')
+        setAmount('6')
+        setUnit('lbs')
     }
 
     return (
         <>
                 <form className="formPanel" autoComplete="off" onSubmit={validateForm}>
-                <ThemeProvider theme={theme} className={classes.paper}>
-                    <Typography onClick={fillForm} className={classes.paper} variant="h6"><b>Add Hop Addition</b></Typography>
-                </ThemeProvider>
-                <Grid container spacing={.25}>
+                <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                        <Typography onClick={fillForm} variant="h6"><b>Add Hop Addition</b></Typography>
+                    </ Grid>
                     <Grid item xs={6}>
                         <TextField 
-                            className={classes.paper}
+                            // Name
                             label="Hop Name"
                             variant="outlined"
                             value={hopName}
@@ -121,7 +109,8 @@ function HopForm() {
                         />
                     </Grid>
                     <Grid item xs={6}>
-                        <TextField 
+                        <TextField
+                            // Date 
                             className={classes.date}
                             type="date"
                             variant="outlined"
@@ -133,7 +122,7 @@ function HopForm() {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField 
-                            className={classes.paper}
+                            // Amount
                             label="Amount"
                             type="number"
                             variant="outlined"
@@ -145,7 +134,7 @@ function HopForm() {
                     </Grid>
                     <Grid item xs={3}>
                         <TextField 
-                            className={classes.paper}
+                            // Unit
                             select
                             label="Unit"
                             variant="outlined"
@@ -158,24 +147,21 @@ function HopForm() {
                             <MenuItem value="lbs">lbs</MenuItem>
                         </TextField>
                     </Grid>
-                    <Grid item xs={2} p={1}>
-                    {/* <Icon 
-                    style={{ fontSize: 30 }}
-                    type="submit"
-                    >add_circle</Icon> */}
-                        <Button type="submit" 
-                                variant="contained" 
-                                color="primary" 
-                                size="small" 
-                                className={classes.root} 
-                                // marginright="3">
-                                >
-                            ➕
+                    <Grid item xs={2}>
+                        <Button 
+                            // Add hop additions
+                            type="submit" 
+                            variant="contained" 
+                            color="primary" 
+                            size="small" 
+                            className={classes.root} 
+                            >
+                            <AddIcon fontSize="medium"/>
                         </Button>
                     </Grid>
                 </Grid> 
                </form>
-               </>
+            </>
     )
 }
 

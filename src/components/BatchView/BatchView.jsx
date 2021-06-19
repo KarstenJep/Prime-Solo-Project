@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
   
@@ -8,14 +8,13 @@ function BatchOutlook () {
     const history = useHistory();
     const batches = useSelector((store) => store.batch);
     
-
+    // on page load, get list of batches from the database, ordered by batch num
     useEffect(() => {
-        // on page load, get list of batches from the database
         dispatch({ type: 'FETCH_BATCHES' });
       }, [])
 
       const handleClick = (batch) => {
-          console.log('clicked a batch', batch);
+        //   console.log('clicked a batch', batch);
           dispatch({ type: 'SET_UPDATE', payload: batch });
           history.push(`/update/${batch.id}`);  
       }
@@ -27,8 +26,8 @@ function BatchOutlook () {
         {batches.map((batch, i) => {
             console.log('in schedule map', batch);
             return (
-                    <p className="formPanel3" onClick={(e) => handleClick(batch)}>
-                        <b>{batch.batch_num}</b> - {batch.name} <i>{batch.style}</i> - Tank {batch.tank} </p>
+                <p className="formPanel3" onClick={(e) => handleClick(batch)}>
+                <b>{batch.batch_num}</b> - {batch.name} <i>{batch.style}</i> - Tank {batch.tank}</p>
             )
         })}     
     </div>
