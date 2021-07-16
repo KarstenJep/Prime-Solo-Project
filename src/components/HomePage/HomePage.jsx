@@ -10,7 +10,7 @@ function HomePage() {
   const daily = useSelector((store) => store.daily);
 
   // Import and format current date via moment.js
-  // Adding this for a commit...
+  // Going to remove this for a commit...
   const date = moment().format('YYYY-MM-DD');
   const today = moment().format("dddd, MMMM Do");
   // console.log('in home', today, daily, user);
