@@ -1,26 +1,49 @@
 import { createMuiTheme }  from '@material-ui/core/styles'
 
 
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-          light: '#6fbf73',
-          main: '#4caf50',
-          dark: '#357a38',
-          contrastText: '#000',
-        },
-        secondary: {
-          light: '#ff4569',
-          main: '#6fbf73',
-          dark: '#b2102f',
-          contrastText: '#000',
-        },
+// const theme = createMuiTheme({
+//     palette: {
+//         primary: {
+//           light: '#6fbf73',
+//           main: '#4caf50',
+//           dark: '#357a38',
+//           contrastText: '#000',
+//         },
+//         secondary: {
+//           light: '#ff4569',
+//           main: '#6fbf73',
+//           dark: '#b2102f',
+//           contrastText: '#000',
+//         },
+//       },
+//     root: {
+//         textAlign: 'center',
+//     },
+//     button: {
+//         itemAlign: 'center',
+//       },
+// })
+
+onst theme = createMuiTheme({
+  palette: {
+      primary: {
+        light: '#6fbf73',
+        main: '#4caf50',
+        dark: '#357a38',
+        contrastText: '#000',
       },
-    root: {
-        textAlign: 'center',
+      secondary: {
+        light: '#ff4569',
+        main: '#6fbf73',
+        dark: '#b2102f',
+        contrastText: '#000',
+      },
     },
-    button: {
-        itemAlign: 'center',
-      },
+  root: {
+      textAlign: 'center',
+  },
+  button: {
+      itemAlign: 'center',
+    },
 })
 export default theme;
