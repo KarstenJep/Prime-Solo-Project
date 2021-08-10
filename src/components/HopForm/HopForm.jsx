@@ -120,6 +120,18 @@ function HopForm() {
                             size="small"
                         />
                     </Grid>
+                    {/* <Grid item xs={6}>
+                        <TextField 
+                            // Amount
+                            label="Amount"
+                            type="number"
+                            variant="outlined"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                            error={amountError}
+                            size="small"
+                        />
+                    </Grid> */}
                     <Grid item xs={6}>
                         <TextField 
                             // Amount
