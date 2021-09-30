@@ -120,18 +120,6 @@ function HopForm() {
                             size="small"
                         />
                     </Grid>
-                    {/* <Grid item xs={6}>
-                        <TextField 
-                            // Amount
-                            label="Amount"
-                            type="number"
-                            variant="outlined"
-                            value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
-                            error={amountError}
-                            size="small"
-                        />
-                    </Grid> */}
                     <Grid item xs={6}>
                         <TextField 
                             // Amount
@@ -159,18 +147,6 @@ function HopForm() {
                             <MenuItem value="lbs">lbs</MenuItem>
                         </TextField>
                     </Grid>
-                    {/* <Grid item xs={2}>
-                        <Button 
-                            // Add hop additions
-                            type="submit" 
-                            variant="contained" 
-                            color="primary" 
-                            size="small" 
-                            className={classes.root} 
-                            >
-                            <AddIcon fontSize="medium"/>
-                        </Button>
-                    </Grid> */}
                       <Grid item xs={2}>
                         <Button 
                             // Add hop additions

@@ -91,7 +91,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       .then((result) => { 
         console.log('Deleted hops', req.body, result.rows[0])
         res.send(result.rows[0])
-        res.sendStatus(200) 
+        // res.sendStatus(200) 
        })
       .catch(err => {
         console.log('Error in deleting item', err);

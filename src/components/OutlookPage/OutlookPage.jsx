@@ -39,7 +39,7 @@ function Outlook() {
         <Box ml={6}>
             <ButtonGroup variant="contained" aria-label="contained primary button group" >
                 <Button color="primary" onClick={handleBatch}>Batch</Button>
-                <Button color="secondary" onClick={handleAdditions}>Additions</Button>
+                <Button color="primary" onClick={handleAdditions}>Additions</Button>
                 <Button color="primary" onClick={handleHops}>Hops</Button>
             </ButtonGroup>
         </Box>
