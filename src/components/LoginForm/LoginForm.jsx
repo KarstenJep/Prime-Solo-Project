@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 // Material UI imports
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -33,7 +33,7 @@ function LoginForm() {
   return (
     <form className="formPanel" onSubmit={login}>
       {/* Logo */}
-      <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="50" />
+      <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="70" className="logo"/>
       {/* Title */}
       <h1>What's Hop'nin?</h1>
 
@@ -48,7 +48,7 @@ function LoginForm() {
           <TextField
             className="input"
             type="text"
-            label="username"
+            label="Username"
             variant="outlined"
             required
             value={username}
@@ -61,7 +61,7 @@ function LoginForm() {
       <Box p={1} >
           <TextField
             type="password"
-            label="password"
+            label="Password"
             variant="outlined"
             required
             value={password}
@@ -71,7 +71,7 @@ function LoginForm() {
         </Box>
      
      {/* Login Button */}
-      <Box p={1} >
+      <Box p={2} >
         <Button 
           size="large" 
           type="submit" 
@@ -83,17 +83,19 @@ function LoginForm() {
       </Box>
 
       {/* Register Link */}
-      <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
+      <Box p={1} >
+        <Button 
+          size="small" 
+          type="submit" 
+          value="Log In" 
+          variant="text" 
+          color="default"
           onClick={() => {
             history.push('/registration');
-          }}
-        >
-         No account? Register 
-        </button>
-      </center>
+          }}>
+          <u>No account? Register</u>
+        </Button>
+      </Box>
     </form>
   );
 }

@@ -151,18 +151,6 @@ function AddPage() {
       })}
     
     {/* Save batch and hop additions */}
-    {/* <Box >
-      <Button 
-        type="submit" 
-        variant="contained" 
-        color="primary"
-        size="large" 
-        onClick={submitForm}
-        startIcon={<SaveIcon />}
-        >
-          Save All
-        </Button>
-      </Box> */}
       <Box >
       <Button 
         type="submit" 

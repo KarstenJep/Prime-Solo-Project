@@ -13,8 +13,8 @@ import OutlookPage from '../OutlookPage/OutlookPage';
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import AddPage from '../AddPage/AddPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import LoginForm from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
 import { useDispatch } from 'react-redux';
 import './App.css';
 
@@ -82,7 +82,7 @@ function App() {
             path="/login"
             authRedirect="/home"
           >
-            <LoginPage />
+            <LoginForm />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -93,7 +93,7 @@ function App() {
             path="/registration"
             authRedirect="/home"
           >
-            <RegisterPage />
+            <RegisterForm />
           </ProtectedRoute>
           
           {/* Visiting localhost:3000/about will show the about page. */}
