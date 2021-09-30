@@ -3,38 +3,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 0 20px;
   background-color: #4caf50;
   overflow: hidden;
   border-bottom: black solid 2px;
 }
 
-.nav a {
-  text-decoration: none;
-}
-
 .nav-title {
-  font-size: 30px;
-  font-weight: 1000;
-  color: #111111;
-  padding-left: 15px;
-  margin: 0;
+  margin: auto;
 }
 
 .navLink {
-  display: inline-block;
+  display:inline-flex;
+  justify-content:space-between;
   color: #1f1f1f;
   background-color: #4caf50;
-  text-align: center;
-  padding: 14px 21px;
-  text-decoration: none;
-  font-size: 22px;
-  margin-left: .7rem;
-
+  padding: 1vh 6vw;
   /* these last two make the logout button in
   the nav bar look like another link */
-  border: none;
   cursor: pointer;
   outline: 0;
 }

@@ -24,7 +24,7 @@ function BatchOutlook () {
         <h2 className="formPanel5">Batches</h2>
 
         {batches.map((batch, i) => {
-            console.log('in schedule map', batch);
+            // console.log('in schedule map', batch);
             return (
                 <p className="formPanel3" onClick={(e) => handleClick(batch)}>
                 <b>{batch.batch_num}</b> - {batch.name} <i>{batch.style}</i> - Tank {batch.tank}</p>

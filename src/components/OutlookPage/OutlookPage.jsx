@@ -36,13 +36,13 @@ function Outlook() {
     return (
       <>
         {/* Button group changes state to control user view */}
-        <Box ml={6}>
+        <div className="btngrp">
             <ButtonGroup variant="contained" aria-label="contained primary button group" >
                 <Button color="primary" onClick={handleBatch}>Batch</Button>
                 <Button color="primary" onClick={handleAdditions}>Additions</Button>
                 <Button color="primary" onClick={handleHops}>Hops</Button>
             </ButtonGroup>
-        </Box>
+        </div>
         
         { hopView &&   
         <HopCountView />

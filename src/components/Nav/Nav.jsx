@@ -20,13 +20,13 @@ function Nav() {
 
   if (user.id != null) {
     loginLinkData.path = '/home';
-    loginLinkData.text = < HomeIcon style={{ fontSize: 34 }}/>;
+    loginLinkData.text = < HomeIcon style={{ fontSize: 40 }}/>;
   }
 
 
   return (
     <div className="nav">
-      <div> 
+      <div className="nav-title"> 
         <Link className="navLink" to={loginLinkData.path}>
           <b>{loginLinkData.text}</b>
         </Link>
@@ -40,15 +40,15 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/add">
-              <AddCircleIcon style={{ fontSize: 34 }}/>
+              <AddCircleIcon style={{ fontSize: 40 }}/>
             </Link>
             <Link className="navLink" to="/schedule">
-              <DateRangeIcon style={{ fontSize: 34 }}/>
+              <DateRangeIcon style={{ fontSize: 40 }}/>
             </Link>
             <Link
               className="navLink"
               onClick={() => dispatch({ type: 'LOGOUT' })}>
-              <ExitToAppIcon style={{ fontSize: 34 }}/>
+              <ExitToAppIcon style={{ fontSize: 40 }}/>
              </Link>
           </>
         )}
