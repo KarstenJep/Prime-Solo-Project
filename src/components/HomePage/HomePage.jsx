@@ -34,7 +34,7 @@ function HomePage() {
       </div> 
       {/* Daily Hop additions list */}
       {daily !== 0 ? daily.map(addition => {
-        console.log('in home map', addition);
+        // console.log('in home map', addition);
         if(addition.complete === false ) {
           return (
             <div className="formPanel2" key={addition.hop_id}>

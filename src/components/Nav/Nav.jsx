@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import {useSelector, useDispatch} from 'react-redux';
@@ -7,16 +7,29 @@ import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { ToggleOff } from '@material-ui/icons';
 
 
 function Nav() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const [login, setLogin] = useState(false);
+
+  const toggleLogin = () => {
+    if(login === false) {
+      return setLogin(true)
+    }
+      return setLogin(false)
+  }
 
   let loginLinkData = {
     path: '/login',
     text: 'Login / Register',
   };
+
+  if (login === true) {
+    loginLinkData.path = '/registration';
+  }
 
   if (user.id != null) {
     loginLinkData.path = '/home';
@@ -27,7 +40,7 @@ function Nav() {
   return (
     <div className="nav">
       <div className="nav-title"> 
-        <Link className="navLink" to={loginLinkData.path}>
+        <Link className="navLink" to={loginLinkData.path} onClick={() => toggleLogin()}>
           <b>{loginLinkData.text}</b>
         </Link>
 
