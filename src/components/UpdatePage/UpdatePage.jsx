@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import UpdateHops from '../UpdateHops/UpdateHops';
+import moment from 'moment';
 // Material UI imports 
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -144,7 +145,7 @@ function UpdatePage () {
                     // console.log('in addition map', addition);
                     return (
                 <p><i> Hop: </i><b>{addition.hop_name}</b>&nbsp;
-                / <i> Amount:</i> <b>{addition.amount} {addition.unit}</b></p>
+                / <i> Amount:</i> <b>{addition.amount} {addition.unit}</b> / <i>Date: </i><b>{moment(addition.date).format('MM/DD')}</b></p>
                     )
                 })}
                 <Button 

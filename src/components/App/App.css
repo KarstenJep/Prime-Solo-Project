@@ -7,8 +7,8 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background: url(https://media.gettyimages.com/photos/falling-green-hop-isolated-on-white-background-clipping-path-full-of-picture-id1073216670?b=1&k=6&m=1073216670&s=170667a&w=0&h=TNt5ia6giGI1SH5beou3LcBrMuIjNz31ijaL0pkVThg=);
-  /* background: url('https://images.unsplash.com/photo-1611004666332-0d1298c1096f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'); */
+  /* background: url(https://media.gettyimages.com/photos/falling-green-hop-isolated-on-white-background-clipping-path-full-of-picture-id1073216670?b=1&k=6&m=1073216670&s=170667a&w=0&h=TNt5ia6giGI1SH5beou3LcBrMuIjNz31ijaL0pkVThg=); */
+  background: url('https://img.freepik.com/free-photo/beer-green-hops-malt-stone-surface-top-view_220925-3674.jpg?size=626&ext=jpg');
   background-size: cover;
 }
 
@@ -20,8 +20,7 @@ img {
 ul { 
   list-style: none;
   font-weight: 500;
-  padding-left: 3em;
-  text-indent: 3em;
+  margin-left: -2rem;
 } 
 
 /* --------------------------------------------------------------------------------
@@ -110,7 +109,7 @@ Form Treatment
   background-color: #fffefe;
   border: solid #4caf50 2px;
   border-radius: 10px;
-  box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px green, 0px 10px 15px rgb(0, 0, 0, 0.7);
 }
 
 .input {
@@ -140,7 +139,7 @@ h1, h2 {
   background-color: #fffefe;
   border: solid #4caf50 2px;
   border-radius: 15px;
-  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px green, 0 10px 15px rgb(0, 0, 0, 0.7);
 }
 
 .formPanel3 {
@@ -153,13 +152,19 @@ h1, h2 {
   background-color: #fffefe;
   border-radius: 15px;
   border: solid #4caf50 2px;
-  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  padding-left: 0em;
-  text-indent: .5em;
-  z-index: 3;
+  box-shadow: 0px 2px 5px green, 0 10px 15px rgb(0, 0, 0, 0.7);
+  padding-left: 3vw;
+  cursor: pointer;
 }
 
-
+.formPanel3:hover {
+  border: solid #4caf50 5px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.7);
+  padding: 10px;
+  font-weight: 500;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
 
 .formPanel4 {
   box-sizing: border-box;
@@ -172,7 +177,7 @@ h1, h2 {
   background-color: #fffefe;
   border: solid #4caf50 2px;
   border-radius: 15px;
-  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px green, 0 10px 15px rgb(0, 0, 0, 0.7);
   margin-right: 10rem;
 }
 
@@ -187,7 +192,7 @@ h1, h2 {
   background-color: #fffefe;
   border: solid #4caf50 2px;
   border-radius: 15px;
-  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px green, 0 10px 15px rgb(0, 0, 0, 0.7);
 }
 
 .formPanel6 {
@@ -200,7 +205,6 @@ h1, h2 {
   background-color: #fffefe;
   border: solid #4caf50 2px;
   border-radius: 15px;
-  box-shadow: 0 10px 15px rgb(0, 0, 0, 0.4);
-  padding-left: 1rem;
-  text-indent: 2rem;
+  box-shadow: 0px 2px 4px green, 0 10px 15px rgb(0, 0, 0, 0.7);
+  padding-left: 10vw;
 }

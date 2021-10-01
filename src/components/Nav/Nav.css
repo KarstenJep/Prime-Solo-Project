@@ -11,6 +11,8 @@
 
 .nav-title {
   margin: auto;
+  font-size: 24px;
+  padding: 1vh 0;
 }
 
 .navLink {
@@ -18,7 +20,7 @@
   justify-content:space-between;
   color: #1f1f1f;
   background-color: #4caf50;
-  padding: 1vh 6vw;
+  padding: 0 6vw;
   /* these last two make the logout button in
   the nav bar look like another link */
   cursor: pointer;

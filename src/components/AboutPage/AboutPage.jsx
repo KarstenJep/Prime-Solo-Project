@@ -3,7 +3,7 @@ import React from 'react';
 
 function AboutPage() {
   return (
-    <div className="formPanel3">
+    <div className="formPanel">
       <center>
         {/* Logo */}
         <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="50" />
@@ -12,17 +12,17 @@ function AboutPage() {
 
       {/* Technology List */}
       <ul>
-        <li>🍺 &nbsp;&nbsp;React</li>
-        <li>🍺 &nbsp;&nbsp;Redux</li>
-        <li>🍺 &nbsp;&nbsp;SQL</li>
-        <li>🍺 &nbsp;&nbsp;Node.js</li>
-        <li>🍺 &nbsp;&nbsp;Express</li>
-        <li>🍺 &nbsp;&nbsp;Material-UI</li>
-        <li>🍺 &nbsp;&nbsp;Moment.js</li>
+        <li>React</li>
+        <li>Redux</li>
+        <li>SQL</li>
+        <li>Node.js</li>
+        <li>Express</li>
+        <li>Material-UI</li>
+        <li>Moment.js</li>
       </ul>
 
       <center>
-        <h3><b>Thank You!</b></h3>
+        <h3><b>Cheers!</b></h3>
         {/* Giphy source */}
         <iframe src="https://giphy.com/embed/DGWAx8d3IkICs" width="240" height="180" frameBorder="5" frameRadius="5"
           margin="" class="giphy-embed" allowFullScreen></iframe>

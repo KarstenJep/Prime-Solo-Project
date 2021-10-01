@@ -33,7 +33,7 @@ function HomePage() {
         <h2 className="formPanel5"><b>{today}</b></h2>
       </div> 
       {/* Daily Hop additions list */}
-      {daily === 0 ? daily.map(addition => {
+      {daily !== 0 ? daily.map(addition => {
         console.log('in home map', addition);
         if(addition.complete === false ) {
           return (
@@ -51,7 +51,7 @@ function HomePage() {
       }
         else {
             return (
-              <div className="formPanel2" key={addition.hop_id}>
+              <div className="formPanel2">
                 <h3><b>{addition.name} {addition.style}</b></h3>
                 <CheckBoxIcon 
                   color="primary"
@@ -62,11 +62,18 @@ function HomePage() {
         }
       })
       : 
+      <div className="formPanel2" >
       <Typography 
           variant="h5"
-          style={{ textAlign: 'center', padding: '5vh'}}>
+          style={{ textAlign: 'center', padding: '5vh'}}> 
           <b>No hop additions today, <br/> enjoy your break!</b>
+          <br/>
+          <CheckBoxIcon 
+                  color="primary"
+                  style={{ fontSize: 45 }}
+                />
       </Typography>
+      </div>
     }
     </>
   );
