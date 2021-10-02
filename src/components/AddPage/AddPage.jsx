@@ -9,6 +9,12 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function AddPage() {
   
@@ -25,6 +31,9 @@ function AddPage() {
   const [styleError, setStyleError] = useState(false);
   const [tankError, setTankError] = useState(false);
   const [batchError, setBatchError] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+
   
   // Capturing batch inputs in state, collecting it in an object to send to DB
   const beer = {
@@ -72,6 +81,7 @@ function AddPage() {
     setStyle('')
     setTank('')
     setBatch('')
+    setOpen(true);
   }
   // Auto fill form for presentation, quick testing
   const fillForm = () => {
@@ -80,6 +90,15 @@ function AddPage() {
     setTank('9')
     setBatch('345')
   }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  
 
   return (
     <>
@@ -164,6 +183,12 @@ function AddPage() {
         </Button>
       </Box>
       </div>
+
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '500' }}>
+          Great success message!
+        </Alert>
+      </Snackbar>
     </>
   );
 }
