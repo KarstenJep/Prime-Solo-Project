@@ -189,7 +189,7 @@ function AddPage() {
       {/* Snackbar Alert */}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
-          Batch added!
+          New Batch has been added!
         </Alert>
       </Snackbar>
     </>

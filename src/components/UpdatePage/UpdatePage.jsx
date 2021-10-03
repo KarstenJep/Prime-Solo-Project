@@ -35,7 +35,7 @@ function UpdatePage () {
      // Setting state for edit snackbar alert
     const [editAlert, setEditAlert] = React.useState(false);
     // Setting state for delete snackbar alert
-    const [deleteAlert, setDeleteAlert] = React.useState(false);
+    // const [deleteAlert, setDeleteAlert] = React.useState(false);
 
     // useEffect(() => {
     //     // on page load, get list of batches from the database
@@ -183,11 +183,8 @@ function UpdatePage () {
         {/* Snackbar Alert */}
         <Snackbar open={editAlert} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
-                Edit Saved!
+                Your Edit Was Saved!
                 </Alert>
-                <Alert variant="filled" severity="success">
-        This is a success alert — check it out!
-      </Alert>
             </Snackbar>
     </>
     )
