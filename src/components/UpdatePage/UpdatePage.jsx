@@ -10,9 +10,14 @@ import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-// import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+// M-UI Snackbar alert
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 
 function UpdatePage () {
@@ -27,6 +32,10 @@ function UpdatePage () {
     const [style, setStyle] = useState('');
     const [tank, setTank] = useState('');
     const [batch, setBatch] = useState('');
+     // Setting state for edit snackbar alert
+    const [editAlert, setEditAlert] = React.useState(false);
+    // Setting state for delete snackbar alert
+    const [deleteAlert, setDeleteAlert] = React.useState(false);
 
     // useEffect(() => {
     //     // on page load, get list of batches from the database
@@ -63,8 +72,18 @@ function UpdatePage () {
         // console.log('updated batch info', updatedBatch);
         dispatch({type: 'UPDATE_BATCH', payload: updatedBatch})
         setEditMode(false)
-        history.push(`/schedule`)
+        // history.push(`/schedule`)
+         // Activate snackbar alert
+         setEditAlert(true);
     }
+
+    // Close snackbar alert
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+        setEditAlert(false);
+    };
 
     return (
         <>
@@ -161,6 +180,15 @@ function UpdatePage () {
         </>  
         } 
         {/* End of conditional rendering */}
+        {/* Snackbar Alert */}
+        <Snackbar open={editAlert} autoHideDuration={4000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
+                Edit Saved!
+                </Alert>
+                <Alert variant="filled" severity="success">
+        This is a success alert — check it out!
+      </Alert>
+            </Snackbar>
     </>
     )
 }

@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+// M-UI Snackbar alert
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -31,7 +31,7 @@ function AddPage() {
   const [styleError, setStyleError] = useState(false);
   const [tankError, setTankError] = useState(false);
   const [batchError, setBatchError] = useState(false);
-
+  // Setting state for snackbar alert
   const [open, setOpen] = React.useState(false);
 
   
@@ -81,6 +81,7 @@ function AddPage() {
     setStyle('')
     setTank('')
     setBatch('')
+    // Activate snackbar alert
     setOpen(true);
   }
   // Auto fill form for presentation, quick testing
@@ -91,6 +92,7 @@ function AddPage() {
     setBatch('345')
   }
 
+  // Close snackbar alert
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -184,9 +186,10 @@ function AddPage() {
       </Box>
       </div>
 
+      {/* Snackbar Alert */}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '500' }}>
-          Great success message!
+        <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
+          Batch added!
         </Alert>
       </Snackbar>
     </>

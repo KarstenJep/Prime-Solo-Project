@@ -43,6 +43,7 @@ function HomePage() {
               <p><i>Addition:</i> <b>{addition.hop_name} {addition.amount}{addition.unit}</b></p>
               <CheckBoxOutlinedIcon
                 color="primary"
+                cursor="pointer"
                 style={{ fontSize: 45 }}
                 onClick={() => handleComplete(addition.hop_id)}
                 />
