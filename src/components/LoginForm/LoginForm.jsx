@@ -50,7 +50,6 @@ function LoginForm() {
             type="text"
             label="Username"
             variant="outlined"
-            required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             size="small"
@@ -63,7 +62,6 @@ function LoginForm() {
             type="password"
             label="Password"
             variant="outlined"
-            required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             size="small"
