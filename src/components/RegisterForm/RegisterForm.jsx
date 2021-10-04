@@ -30,7 +30,7 @@ function RegisterForm() {
       {/* Logo */}
       <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="70" className="logo"/>
       {/* Title */}
-      <h1>New User</h1>
+      <h1>New Brewer</h1>
 
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">

@@ -22,11 +22,12 @@ function AboutPage() {
       </ul>
 
       <center>
-        <h3><b>Cheers!</b></h3>
         {/* Giphy source */}
+        <h3><b>Cheers!</b></h3>
         <iframe src="https://giphy.com/embed/DGWAx8d3IkICs" width="240" height="180" frameBorder="5" frameRadius="5"
           margin="" class="giphy-embed" allowFullScreen></iframe>
         <p><a href="https://giphy.com/gifs/cool-DGWAx8d3IkICs"></a></p>
+        <h4>- Karsten Jepsen - </h4>
       </center>
     </div>
   );
