@@ -9,12 +9,12 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SaveIcon from '@material-ui/icons/Save';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+// import Snackbar from '@mui/material/Snackbar';
+// import MuiAlert from '@mui/material/Alert';
 // M-UI Snackbar alert
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
 
 function AddPage() {
   
@@ -187,11 +187,11 @@ function AddPage() {
       </div>
 
       {/* Snackbar Alert */}
-      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+      {/* <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
           New Batch has been added!
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
     </>
   );
 }
