@@ -12,12 +12,12 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Snackbar from '@mui/material/Snackbar';
+// import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 // M-UI Snackbar alert
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+// });
 
 
 function UpdatePage () {
@@ -72,18 +72,18 @@ function UpdatePage () {
         // console.log('updated batch info', updatedBatch);
         dispatch({type: 'UPDATE_BATCH', payload: updatedBatch})
         setEditMode(false)
-        // history.push(`/schedule`)
+        history.push(`/schedule`)
          // Activate snackbar alert
-         setEditAlert(true);
+        //  setEditAlert(true);
     }
 
-    // Close snackbar alert
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-        return;
-        }
-        setEditAlert(false);
-    };
+    // // Close snackbar alert
+    // const handleClose = (event, reason) => {
+    //     if (reason === 'clickaway') {
+    //     return;
+    //     }
+    //     setEditAlert(false);
+    // };
 
     return (
         <>
@@ -181,11 +181,11 @@ function UpdatePage () {
         } 
         {/* End of conditional rendering */}
         {/* Snackbar Alert */}
-        <Snackbar open={editAlert} autoHideDuration={4000} onClose={handleClose}>
+        {/* <Snackbar open={editAlert} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ maxWidth: '100%' }}>
                 Your Edit Was Saved!
                 </Alert>
-            </Snackbar>
+            </Snackbar> */}
     </>
     )
 }
