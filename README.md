@@ -58,5 +58,3 @@ Thanks to Prime Digital Academy who equipped me with the necessary tools to make
 
 ## Support
 If you have suggestions or issues, please email kjepsen86@gmail.com
-
-WHat
