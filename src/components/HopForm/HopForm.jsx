@@ -142,21 +142,23 @@ function HopForm() {
                             onChange={(e) => setUnit(e.target.value)}
                             error={unitError}
                             size="small"
+                            style={{ marginLeft: '-1vh', width: '10vh'}}
                         >
                             <MenuItem value="oz">oz</MenuItem>
                             <MenuItem value="lbs">lbs</MenuItem>
                         </TextField>
                     </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={3}>
                         <Button 
                             // Add hop additions
                             type="submit" 
                             variant="contained" 
                             color="primary" 
                             size="small" 
-                            className={classes.root} 
+                            className={classes.root}
+                            style={{ width: '12vh', height: '5.5vh', marginLeft: '-2vh'}}
                             >
-                            <AddIcon fontSize="medium"/>
+                            <AddIcon fontSize="medium"/> Hop
                         </Button>
                     </Grid>
                 </Grid> 
