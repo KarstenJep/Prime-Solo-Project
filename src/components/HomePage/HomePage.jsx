@@ -33,10 +33,13 @@ function HomePage() {
         <h2 className="formPanel5"><b>{today}</b></h2>
       </div> 
       {/* Daily Hop additions list */}
-      {daily !== 0 ? daily.map(addition => {
+      {/* The ternary checks if there are hop additions for the day, if so it maps them out. If empty, displays message */}
+      {daily.length > 0 ? daily.map(addition => {
         // console.log('in home map', addition);
+        // Each addition checked for completion in next conditional
         if(addition.complete === false ) {
           return (
+            // Uncomplete hop addition
             <div className="formPanel2" key={addition.hop_id}>
               <h3><b>{addition.name} {addition.style}</b></h3>
               <p><i>Tank:</i> <b>{addition.tank}</b></p>
@@ -52,6 +55,7 @@ function HomePage() {
       }
         else {
             return (
+              // Complete hop addition
               <div className="formPanel2">
                 <h3><b>{addition.name} {addition.style}</b></h3>
                 <CheckBoxIcon 
@@ -63,6 +67,7 @@ function HomePage() {
         }
       })
       : 
+      // Message to display if there are no hop additions for the day
       <div className="formPanel2" >
       <Typography 
           variant="h5"
