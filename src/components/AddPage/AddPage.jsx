@@ -53,7 +53,7 @@ function AddPage() {
     setTankError(false)
 
     if (name == ''){
-        setHopNameError(true)
+        setNameError(true)
     }
     if (style == ''){
         setAmountError(true)
