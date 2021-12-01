@@ -36,10 +36,9 @@ app.use('/api/inventory', inventoryRouter);
 app.use(express.static('build'));
 
 // App Set //
-const host = '0.0.0.0';
 const PORT = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(PORT, host, () => {
-  console.log(`Listening on port: ${PORT}, with host: ${host}`);
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
 });
