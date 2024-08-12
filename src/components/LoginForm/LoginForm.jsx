@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import hop from '../../hop.png';
 // Material UI imports
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -33,7 +34,7 @@ function LoginForm() {
   return (
     <form className="formPanel" onSubmit={login}>
       {/* Logo */}
-      <img src="https://bootstraplogos.com/wp-content/uploads/edd/2017/11/logo-1.png" width="70" className="logo"/>
+      <img src={hop} width="70" className="logo"/>
       {/* Title */}
       <h1>What's Hop'nin?</h1>
 
