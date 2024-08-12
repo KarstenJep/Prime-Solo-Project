@@ -160,7 +160,7 @@ function AddPage() {
           </div>
       <HopForm />
 
-      {/* Render added hop additions */}
+      {/* Render added hop additionss */}
       <div className="formPanel" >
         {hops.map((addition, i) => {
         // console.log('in hop map', addition);
